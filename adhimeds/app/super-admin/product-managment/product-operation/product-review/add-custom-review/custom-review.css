@@ -1,0 +1,370 @@
+/* ===== CUSTOM REVIEW – THEME‑AWARE ===== */
+
+/* ─── Page Background ─── */
+.custom-review-page {
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* ─── Card Styling ─── */
+.card {
+  border-radius: 1.5rem !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+  overflow: hidden !important;
+}
+
+.card-header {
+  background: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1.5rem 2rem !important;
+}
+
+.card-header h3 {
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+  color: var(--text-primary) !important;
+}
+
+.card-header h3 i {
+  color: var(--accent) !important;
+}
+
+.card-header hr {
+  border-color: var(--border-color) !important;
+  opacity: 0.6 !important;
+  margin-top: 0.8rem !important;
+  margin-bottom: 0 !important;
+}
+
+.card-body {
+  padding: 2rem 2rem 1.5rem !important;
+}
+
+/* ─── Form Labels ─── */
+.form-label {
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.form-label i {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem !important;
+}
+
+.text-danger {
+  color: #ef4444 !important;
+  font-weight: 700 !important;
+}
+
+/* ─── Form Controls ─── */
+.form-control,
+.form-select {
+  border-radius: 0.75rem !important;
+  border: 1px solid var(--input-border) !important;
+  transition: all 0.2s ease !important;
+  height: 44px !important;
+  font-size: 0.9rem !important;
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 59, 130, 246), 0.08) !important;
+}
+
+textarea.form-control {
+  min-height: 100px !important;
+  height: auto !important;
+  resize: vertical !important;
+}
+
+.form-text {
+  font-size: 0.8rem !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ─── Rating Stars ─── */
+.rating-stars {
+  display: flex !important;
+  gap: 0.3rem !important;
+  align-items: center !important;
+  padding: 0.2rem 0 !important;
+}
+
+.star-btn {
+  background: none !important;
+  border: none !important;
+  font-size: 2rem !important;
+  cursor: pointer !important;
+  color: var(--border-color) !important;
+  transition: all 0.2s ease !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.star-btn.active {
+  color: #fbbf24 !important;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.15) !important;
+}
+
+.star-btn:hover {
+  color: #f59e0b !important;
+  transform: scale(1.08) !important;
+}
+
+/* ─── Date Options ─── */
+.date-options {
+  display: flex !important;
+  gap: 1.5rem !important;
+  align-items: center !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.date-options .form-check {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+
+.date-options .form-check-input {
+  width: 1rem !important;
+  height: 1rem !important;
+  accent-color: var(--accent) !important;
+  cursor: pointer !important;
+}
+
+.date-options .form-check-label {
+  font-size: 0.9rem !important;
+  color: var(--text-primary) !important;
+  cursor: pointer !important;
+}
+
+/* ─── File Upload ─── */
+.file-upload-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  flex-wrap: wrap !important;
+}
+
+.file-input {
+  position: absolute !important;
+  width: 0.1px !important;
+  height: 0.1px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  z-index: -1 !important;
+}
+
+.file-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.4rem 1.2rem !important;
+  background: var(--bg-secondary) !important;
+  border: 1px dashed var(--border-color) !important;
+  border-radius: 2rem !important;
+  cursor: pointer !important;
+  font-size: 0.85rem !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
+  height: 36px !important;
+}
+
+.file-label:hover {
+  background: var(--bg-secondary) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+.file-label i {
+  font-size: 1rem !important;
+}
+
+.file-name {
+  font-size: 0.85rem !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ─── Image Previews ─── */
+.avatar-preview img {
+  width: 64px !important;
+  height: 64px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+.image-preview-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin-top: 0.8rem !important;
+}
+
+.image-preview-grid .preview-item {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  border: 1px solid var(--border-color) !important;
+  transition: all 0.2s ease !important;
+}
+
+.image-preview-grid .preview-item:hover {
+  border-color: var(--accent) !important;
+  transform: scale(1.03) !important;
+}
+
+.image-preview-grid .preview-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* ─── Buttons ─── */
+.btn-save-update,
+.btn-submit {
+  background: var(--accent) !important;
+  border: none !important;
+  padding: 0.6rem 2rem !important;
+  border-radius: 2rem !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 2px 12px rgba(var(--accent-rgb, 59, 130, 246), 0.15) !important;
+}
+
+.btn-save-update:hover:not(:disabled),
+.btn-submit:hover:not(:disabled) {
+  background: var(--accent-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb, 59, 130, 246), 0.25) !important;
+}
+
+.btn-save-update:disabled,
+.btn-submit:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.btn-cancel {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.6rem 2rem !important;
+  border-radius: 2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn-cancel:hover {
+  background: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .card-header {
+    padding: 1rem 1.2rem !important;
+  }
+
+  .card-body {
+    padding: 1.2rem !important;
+  }
+
+  .date-options {
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+    align-items: flex-start !important;
+  }
+
+  .file-upload-wrapper {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .image-preview-grid .preview-item {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .star-btn {
+    font-size: 1.6rem !important;
+  }
+
+  .btn-cancel,
+  .btn-save-update,
+  .btn-submit {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .d-flex.justify-content-end {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-review-page {
+    padding: 0.6rem !important;
+  }
+
+  .card-header {
+    padding: 0.8rem !important;
+  }
+
+  .card-header h3 {
+    font-size: 1rem !important;
+  }
+
+  .card-body {
+    padding: 0.8rem !important;
+  }
+
+  .form-control,
+  .form-select {
+    height: 38px !important;
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.7rem !important;
+  }
+
+  textarea.form-control {
+    min-height: 80px !important;
+  }
+
+  .star-btn {
+    font-size: 1.3rem !important;
+  }
+
+  .image-preview-grid .preview-item {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .btn-cancel,
+  .btn-save-update,
+  .btn-submit {
+    padding: 0.4rem 1.2rem !important;
+    font-size: 0.8rem !important;
+  }
+}

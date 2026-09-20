@@ -1,0 +1,143 @@
+/* ===== NOTES DASHBOARD – THEME‑AWARE ===== */
+
+.notes-dashboard {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.btn-add-note {
+  background: var(--accent);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  color: #fff;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn-add-note:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.filter-bar {
+  background: var(--bg-card);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+}
+
+.btn-reset {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: 0.2s;
+}
+.btn-reset:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.form-card {
+  background: var(--bg-card);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  background: var(--bg-secondary);
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.med-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.med-table th {
+  background: var(--bg-secondary);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+.med-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  color: var(--text-primary);
+}
+
+.badge-type {
+  background: var(--bg-secondary);
+  color: var(--accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+
+.action-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.edit-btn {
+  color: #f59e0b; /* keep amber – theme‑independent */
+  background: var(--bg-secondary);
+}
+.edit-btn:hover {
+  background: #f59e0b;
+  color: #fff;
+}
+.delete-btn {
+  color: #ef4444; /* keep red – theme‑independent */
+  background: var(--bg-secondary);
+}
+.delete-btn:hover:not(:disabled) {
+  background: #ef4444;
+  color: #fff;
+}
+.delete-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .med-table th,
+  .med-table td {
+    padding: 0.5rem;
+  }
+}

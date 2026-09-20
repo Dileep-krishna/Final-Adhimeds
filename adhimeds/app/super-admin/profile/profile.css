@@ -1,0 +1,462 @@
+/* ==========================================
+   PROFILE PAGE – THEME‑AWARE
+========================================== */
+
+.profile-page {
+  padding: 24px;
+  background: var(--bg-primary, #f5f7fb);
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ─── Header ─── */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.profile-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.profile-subtitle {
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* ─── Card ─── */
+.profile-card {
+  background: var(--bg-card);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 400px;
+}
+
+/* ─── Avatar Section ─── */
+.profile-avatar-section {
+  width: 280px;
+  background: var(--bg-secondary);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  border: 3px solid var(--border-color);
+  transition: border-color 0.2s;
+}
+
+.profile-avatar-wrapper:hover {
+  border-color: var(--accent);
+}
+
+.profile-avatar-wrapper:hover .profile-avatar-overlay {
+  opacity: 1;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: var(--text-secondary);
+}
+
+.profile-avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+  gap: 4px;
+}
+
+.profile-avatar-overlay i {
+  font-size: 2rem;
+}
+
+.profile-avatar-overlay span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.profile-role-badge {
+  margin-top: 1rem;
+  padding: 0.4rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ─── Form Section ─── */
+.profile-form {
+  flex: 1;
+  padding: 2rem;
+  min-width: 300px;
+}
+
+.profile-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.profile-form .form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.profile-form .form-group input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.8rem;
+  font-size: 0.95rem;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.profile-form .form-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+
+.profile-form .form-group input.disabled-input {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.profile-form .text-muted {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.profile-divider {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 1.5rem 0;
+}
+
+.password-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+/* ─── Form Actions ─── */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 2rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.btn-save:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 2rem;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* ─── Loading ─── */
+.profile-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 992px) {
+  .profile-avatar-section {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+  }
+  .profile-form {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile-title {
+    font-size: 1.5rem;
+  }
+  .profile-avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-page {
+    padding: 16px;
+  }
+  .profile-title {
+    font-size: 1.2rem;
+  }
+  .profile-form {
+    padding: 1rem;
+  }
+  .profile-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-avatar-placeholder {
+    font-size: 3.5rem;
+  }
+}
+
+/* ─── Dark / Green Mode Overrides ─── */
+.super-admin-wrapper.dark .profile-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.dark .profile-avatar-section {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.dark .profile-form .form-group input {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+.super-admin-wrapper.dark .profile-form .form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+.super-admin-wrapper.dark .profile-form .form-group input.disabled-input {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+.super-admin-wrapper.dark .btn-secondary {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+.super-admin-wrapper.dark .btn-secondary:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.super-admin-wrapper.dark .btn-cancel {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+.super-admin-wrapper.dark .btn-cancel:hover {
+  background: var(--bg-hover);
+}
+.super-admin-wrapper.dark .profile-divider {
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.dark .profile-avatar-wrapper {
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.dark .profile-avatar-wrapper:hover {
+  border-color: var(--accent);
+}
+
+.super-admin-wrapper.green .profile-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.green .profile-avatar-section {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.green .profile-form .form-group input {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+.super-admin-wrapper.green .profile-form .form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+.super-admin-wrapper.green .profile-form .form-group input.disabled-input {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+.super-admin-wrapper.green .btn-secondary {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+.super-admin-wrapper.green .btn-secondary:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.super-admin-wrapper.green .btn-cancel {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+.super-admin-wrapper.green .btn-cancel:hover {
+  background: var(--bg-hover);
+}
+.super-admin-wrapper.green .profile-divider {
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.green .profile-avatar-wrapper {
+  border-color: var(--border-color);
+}
+.super-admin-wrapper.green .profile-avatar-wrapper:hover {
+  border-color: var(--accent);
+}
+/* Remove avatar button */
+.btn-remove-avatar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #dc2626;          /* red-600 */
+  background: transparent;
+  border: 1px solid #fecaca; /* red-200 */
+  border-radius: 9999px;    /* pill shape */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #fef2f2; /* red-50 */
+}
+
+.btn-remove-avatar:hover {
+  background-color: #fee2e2; /* red-100 */
+  border-color: #fca5a5;    /* red-300 */
+  color: #b91c1c;           /* red-700 */
+  transform: scale(1.02);
+}
+
+.btn-remove-avatar:active {
+  transform: scale(0.97);
+}
+
+.btn-remove-avatar i {
+  font-size: 1rem;
+  line-height: 1;
+}

@@ -1,0 +1,511 @@
+/* ============================================================
+   PHARMA DASHBOARD – ORIGINAL DESIGN (LIGHT MODE)
+   ============================================================ */
+
+.dashboard-container {
+  background: #f5f6fa;
+  min-height: 100vh;
+  overflow: visible;
+}
+.store-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.store-icon {
+  width: 60px;
+  height: 60px;
+  background: #1f2a44;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.last-added {
+  background: #eef2f7;
+  border-radius: 10px;
+}
+.solution-card {
+  background: white;
+  border-radius: 10px;
+  height: 150px;
+}
+.stats h6 {
+  font-weight: bold;
+}
+
+/* ── FOOTER – Keep original dark design ── */
+.footer-container {
+  margin-top: 40px;
+}
+.footer-top {
+  background: #1abc9c;
+  color: white;
+}
+.footer-top h5 {
+  font-weight: 500;
+}
+.social-icons span {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: #ffffff;
+  color: #1abc9c;
+  border-radius: 50%;
+  line-height: 35px;
+  margin: 0 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.footer-main {
+  background: #0d3b56;
+  color: #ffffff;
+}
+.footer-main h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.footer-main p {
+  font-size: 13px;
+  margin: 4px 0;
+  color: #cfd8dc;
+  cursor: pointer;
+}
+.footer-main p:hover {
+  color: #ffffff;
+}
+.footer-features {
+  background: #0d3b56;
+  color: #ffffff;
+  border-top: 1px dashed #3a5a6b;
+  border-bottom: 1px dashed #3a5a6b;
+}
+.footer-features h6 {
+  font-weight: 600;
+}
+.footer-features p {
+  font-size: 13px;
+  color: #cfd8dc;
+}
+.footer-bottom {
+  background: #0b2f44;
+  color: #cfd8dc;
+  font-size: 13px;
+}
+
+/* ── Cards & interactions ── */
+.solution-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.stats h6 {
+  color: #ff9800;
+}
+.card-text {
+  width: 100%;
+}
+.stat-item {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+  transition: transform 0.2s;
+}
+.stat-item:hover {
+  transform: translateY(-3px);
+}
+.bi {
+  font-size: 2rem;
+}
+.last-added-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+.last-added-card h6 {
+  color: #1f2a44;
+  border-left: 3px solid #ff9800;
+  padding-left: 12px;
+}
+.list-group-item {
+  background: white;
+  border: 1px solid #eef2f6;
+  margin-bottom: 0.5rem;
+  border-radius: 8px !important;
+  transition: all 0.2s;
+}
+.list-group-item:hover {
+  background: #f8fafc;
+  border-color: #dee2e6;
+  transform: translateX(2px);
+}
+.store-group h6 {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  color: #1f2a44;
+}
+.store-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.small-store-card {
+  background: white;
+  border-radius: 8px;
+  transition: transform 0.1s ease;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.small-store-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: #fef9e6;
+}
+.store-logo-box {
+  width: 80px;
+  min-width: 80px;
+  background-color: #0d3b66;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  border-right: 1px solid #dee2e6;
+}
+.store-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.store-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.store-title {
+  font-weight: 500;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 14px;
+}
+.store-footer {
+  font-size: 13px;
+  color: #555;
+}
+.last-added-card {
+  min-height: 200px;
+}
+.store-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* ── Responsive ── */
+@media (min-width: 576px) {
+  .stat-item {
+    flex-direction: row !important;
+    text-align: left;
+  }
+}
+@media (min-width: 768px) {
+  .solution-card {
+    flex-direction: row !important;
+    justify-content: space-between;
+  }
+  .card-img {
+    margin-left: 1rem;
+  }
+}
+
+/* ============================================================
+   TARGETED FORCE LIGHT – ONLY FOR CONTENT & SEARCH
+   (Preserves topbar gradient & footer)
+   ============================================================ */
+
+/* ── Main content containers: force light backgrounds ── */
+.pharma-dashboard-light .dashboard-container,
+.pharma-dashboard-light .container-fluid,
+.pharma-dashboard-light .row,
+.pharma-dashboard-light .col-12,
+.pharma-dashboard-light .col-lg-8,
+.pharma-dashboard-light .col-lg-4,
+.pharma-dashboard-light .col-md-4,
+.pharma-dashboard-light .store-card,
+.pharma-dashboard-light .solution-card,
+.pharma-dashboard-light .stat-item,
+.pharma-dashboard-light .last-added-card,
+.pharma-dashboard-light .solutions,
+.pharma-dashboard-light .stats,
+.pharma-dashboard-light .store-flex-container,
+.pharma-dashboard-light .small-store-card,
+.pharma-dashboard-light .last-added {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #e2e8f0 !important;
+}
+.pharma-dashboard-light .dashboard-container {
+  background: #f5f6fa !important;
+}
+.pharma-dashboard-light .store-card {
+  background: white !important;
+}
+.pharma-dashboard-light .solution-card {
+  background: white !important;
+}
+.pharma-dashboard-light .stat-item {
+  background: #fff !important;
+}
+.pharma-dashboard-light .last-added-card {
+  background: #fff !important;
+}
+.pharma-dashboard-light .store-logo-box {
+  background: #0d3b66 !important;
+  color: #fff !important;
+}
+.pharma-dashboard-light .store-title {
+  border-bottom-color: #dee2e6 !important;
+}
+.pharma-dashboard-light .store-footer {
+  color: #555 !important;
+}
+.pharma-dashboard-light .text-muted {
+  color: #6c757d !important;
+}
+.pharma-dashboard-light .fw-bold {
+  color: #212529 !important;
+}
+.pharma-dashboard-light .list-group-item {
+  background: white !important;
+  border-color: #eef2f6 !important;
+}
+
+/* ── Force the menu bar (below topbar) to stay white ── */
+.pharma-dashboard-light .menu-bar,
+.pharma-dashboard-light .menu-bar * {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #e2e8f0 !important;
+}
+.pharma-dashboard-light .menu-item {
+  color: #212529 !important;
+}
+.pharma-dashboard-light .menu-item:hover {
+  color: #5a3fff !important;
+}
+.pharma-dashboard-light .seller-btn {
+  background: #20c997 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* ── Force search box and input ── */
+.pharma-dashboard-light .search-box,
+.pharma-dashboard-light .search-box * {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #e2e8f0 !important;
+}
+.pharma-dashboard-light .search-box input,
+.pharma-dashboard-light .search-box .form-control,
+.pharma-dashboard-light .search-box input[type="text"],
+.pharma-dashboard-light .youtube-search-input,
+.pharma-dashboard-light input.form-control {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 1px solid #ced4da !important;
+}
+.pharma-dashboard-light .search-box input::placeholder,
+.pharma-dashboard-light .youtube-search-input::placeholder {
+  color: #6c757d !important;
+}
+.pharma-dashboard-light .search-box input:focus,
+.pharma-dashboard-light .youtube-search-input:focus {
+  border-color: #86b7fe !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+  background: #ffffff !important;
+}
+
+/* ── Force dropdowns ── */
+.pharma-dashboard-light .search-results-dropdown,
+.pharma-dashboard-light .search-results-dropdown *,
+.pharma-dashboard-light .profile-dropdown,
+.pharma-dashboard-light .profile-dropdown * {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* ── React-select inside search ── */
+.pharma-dashboard-light .react-select__control {
+  background: #ffffff !important;
+  border: none !important;
+}
+.pharma-dashboard-light .react-select__single-value {
+  color: #212529 !important;
+}
+.pharma-dashboard-light .react-select__menu {
+  background: #ffffff !important;
+  border: 1px solid #ced4da !important;
+}
+.pharma-dashboard-light .react-select__option {
+  color: #212529 !important;
+}
+.pharma-dashboard-light .react-select__option--is-focused {
+  background: #f1f3f5 !important;
+}
+
+/* ─── Dark mode overrides (targeted) ─── */
+html.dark .pharma-dashboard-light .dashboard-container,
+html.dark .pharma-dashboard-light .container-fluid,
+html.dark .pharma-dashboard-light .row,
+html.dark .pharma-dashboard-light .col-12,
+html.dark .pharma-dashboard-light .store-card,
+html.dark .pharma-dashboard-light .solution-card,
+html.dark .pharma-dashboard-light .stat-item,
+html.dark .pharma-dashboard-light .last-added-card,
+html.dark .pharma-dashboard-light .solutions,
+html.dark .pharma-dashboard-light .stats,
+html.dark .pharma-dashboard-light .store-flex-container,
+html.dark .pharma-dashboard-light .small-store-card,
+html.dark .pharma-dashboard-light .last-added,
+html.dark .pharma-dashboard-light .menu-bar,
+html.dark .pharma-dashboard-light .menu-bar *,
+html.dark .pharma-dashboard-light .search-box,
+html.dark .pharma-dashboard-light .search-box *,
+html.dark .pharma-dashboard-light .search-results-dropdown,
+html.dark .pharma-dashboard-light .search-results-dropdown *,
+html.dark .pharma-dashboard-light .profile-dropdown,
+html.dark .pharma-dashboard-light .profile-dropdown * {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #e2e8f0 !important;
+}
+html.dark .pharma-dashboard-light .dashboard-container {
+  background: #f5f6fa !important;
+}
+html.dark .pharma-dashboard-light .store-card {
+  background: white !important;
+}
+html.dark .pharma-dashboard-light .solution-card {
+  background: white !important;
+}
+html.dark .pharma-dashboard-light .stat-item {
+  background: #fff !important;
+}
+html.dark .pharma-dashboard-light .last-added-card {
+  background: #fff !important;
+}
+html.dark .pharma-dashboard-light .store-logo-box {
+  background: #0d3b66 !important;
+  color: #fff !important;
+}
+html.dark .pharma-dashboard-light .store-title {
+  border-bottom-color: #dee2e6 !important;
+}
+html.dark .pharma-dashboard-light .store-footer {
+  color: #555 !important;
+}
+html.dark .pharma-dashboard-light .text-muted {
+  color: #6c757d !important;
+}
+html.dark .pharma-dashboard-light .fw-bold {
+  color: #212529 !important;
+}
+html.dark .pharma-dashboard-light .menu-item {
+  color: #212529 !important;
+}
+html.dark .pharma-dashboard-light .menu-item:hover {
+  color: #5a3fff !important;
+}
+html.dark .pharma-dashboard-light .seller-btn {
+  background: #20c997 !important;
+  color: white !important;
+}
+html.dark .pharma-dashboard-light .search-box input,
+html.dark .pharma-dashboard-light .search-box .form-control,
+html.dark .pharma-dashboard-light .youtube-search-input,
+html.dark .pharma-dashboard-light input.form-control {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 1px solid #ced4da !important;
+}
+html.dark .pharma-dashboard-light .search-box input::placeholder,
+html.dark .pharma-dashboard-light .youtube-search-input::placeholder {
+  color: #6c757d !important;
+}
+html.dark .pharma-dashboard-light .search-box input:focus,
+html.dark .pharma-dashboard-light .youtube-search-input:focus {
+  border-color: #86b7fe !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+  background: #ffffff !important;
+}
+html.dark .pharma-dashboard-light .react-select__control {
+  background: #ffffff !important;
+  border: none !important;
+}
+html.dark .pharma-dashboard-light .react-select__single-value {
+  color: #212529 !important;
+}
+html.dark .pharma-dashboard-light .react-select__menu {
+  background: #ffffff !important;
+  border: 1px solid #ced4da !important;
+}
+html.dark .pharma-dashboard-light .react-select__option {
+  color: #212529 !important;
+}
+html.dark .pharma-dashboard-light .react-select__option--is-focused {
+  background: #f1f3f5 !important;
+}
+/* ─── FORCE REACT‑SELECT SELECTED VALUE TEXT TO BE VISIBLE ─── */
+.pharma-dashboard-light .react-select__single-value {
+  color: #212529 !important;
+  opacity: 1 !important;
+}
+
+.pharma-dashboard-light .react-select__control {
+  background: #ffffff !important;
+  border: 1px solid #ced4da !important;
+}
+
+.pharma-dashboard-light .react-select__placeholder {
+  color: #6c757d !important;
+}
+
+/* ─── DARK MODE OVERRIDE ─── */
+html.dark .pharma-dashboard-light .react-select__single-value {
+  color: #212529 !important;
+}
+
+html.dark .pharma-dashboard-light .react-select__control {
+  background: #ffffff !important;
+  border: 1px solid #ced4da !important;
+}
+/* ─── FORCE REACT‑SELECT STORE NAME TO BE VISIBLE ─── */
+
+/* Target the single value text with maximum specificity */
+.pharma-dashboard-light .react-select__single-value,
+html.dark .pharma-dashboard-light .react-select__single-value,
+.pharma-dashboard-light .react-select__control .react-select__single-value,
+html.dark .pharma-dashboard-light .react-select__control .react-select__single-value {
+  color: #212529 !important;
+  opacity: 1 !important;
+}
+
+/* Force control background to white */
+.pharma-dashboard-light .react-select__control,
+html.dark .pharma-dashboard-light .react-select__control {
+  background: #ffffff !important;
+  border: 1px solid #ced4da !important;
+}
+
+/* Force the dropdown indicator */
+.pharma-dashboard-light .react-select__indicator,
+html.dark .pharma-dashboard-light .react-select__indicator {
+  color: #212529 !important;
+}

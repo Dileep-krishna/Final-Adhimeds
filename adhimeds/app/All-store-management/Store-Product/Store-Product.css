@@ -1,0 +1,436 @@
+/* Store-Product.css – Themed (light/dark) */
+
+/* ── Main container ── */
+.store-products-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--bg-secondary) !important;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--accent) !important;
+}
+
+/* ── No‑hover button class (overrides Bootstrap) ── */
+.btn.no-hover-btn,
+.btn.no-hover-btn:hover,
+.btn.no-hover-btn:focus,
+.btn.no-hover-btn:active {
+  background: inherit !important;
+  background-color: inherit !important;
+  border-color: inherit !important;
+  color: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+.btn-primary.no-hover-btn,
+.btn-primary.no-hover-btn:hover,
+.btn-primary.no-hover-btn:focus,
+.btn-primary.no-hover-btn:active {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: white !important;
+}
+
+.btn-outline-secondary.no-hover-btn,
+.btn-outline-secondary.no-hover-btn:hover,
+.btn-outline-secondary.no-hover-btn:focus,
+.btn-outline-secondary.no-hover-btn:active {
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ── Grid layout (store view) ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: var(--bg-card) !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px var(--shadow);
+}
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: var(--bg-secondary);
+}
+.product-info {
+  padding: 1rem;
+}
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary) !important;
+}
+.product-brand {
+  font-size: 0.85rem;
+  color: var(--text-secondary) !important;
+  margin-bottom: 0.5rem;
+}
+.product-rating {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #f59e0b !important;
+}
+.rating-value {
+  color: var(--text-primary) !important;
+  margin-left: 0.25rem;
+}
+.review-count {
+  color: var(--text-secondary) !important;
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+}
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent) !important;
+  margin-bottom: 1rem;
+}
+.discount-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+}
+
+/* ── PRIMARY BUTTON – clearly visible ── */
+.view-details-btn {
+  width: 100%;
+  background: var(--accent) !important;
+  color: white !important;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.view-details-btn:hover {
+  background: var(--accent-hover) !important;
+  transform: scale(1.02);
+}
+
+/* ── ADD BUTTON (if used) ── */
+.btn-add-product {
+  background: var(--accent) !important;
+  color: white !important;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-add-product:hover {
+  background: var(--accent-hover) !important;
+}
+
+/* ── Loading / Empty ── */
+.loading-spinner {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary) !important;
+}
+.no-products {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary) !important;
+  background: var(--bg-card) !important;
+  border-radius: 1rem;
+}
+
+/* ── Filter bar – inputs stay themed ── */
+.filter-bar {
+  margin-bottom: 1.5rem;
+  background: var(--bg-card) !important;
+  padding: 1.2rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow);
+}
+.filter-bar .form-control,
+.filter-bar .form-select,
+.store-products-container .form-control,
+.store-products-container .form-select,
+.store-products-container input[type="text"],
+.store-products-container input[type="number"],
+.store-products-container input[type="search"],
+.store-products-container select {
+  border-radius: 2rem !important;
+  border: 1px solid var(--input-border) !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.85rem !important;
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+}
+.filter-bar .form-control:focus,
+.filter-bar .form-select:focus,
+.store-products-container .form-control:focus,
+.store-products-container .form-select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1) !important;
+  outline: none !important;
+}
+.filter-bar label,
+.filter-bar .form-label,
+.filter-bar .text-muted {
+  color: var(--text-secondary) !important;
+}
+
+/* ── Table styling ── */
+.med-table {
+  width: 100%;
+  background: var(--bg-card) !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.med-table th {
+  background: var(--bg-secondary) !important;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary) !important;
+}
+.med-table td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+.med-table tr:hover td {
+  background: var(--bg-secondary) !important;
+}
+
+/* ── ACTION BUTTONS (View, Edit, Delete) ── */
+.action-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+}
+.action-btn:hover {
+  background: var(--bg-secondary) !important;
+  transform: scale(1.1);
+}
+.view-btn { color: var(--accent) !important; }
+.edit-btn { color: #f59e0b !important; }
+.delete-btn { color: #ef4444 !important; }
+
+/* ── Pagination ── */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.pagination-info {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem;
+}
+.pagination-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.per-page-select {
+  width: auto;
+  border: 1px solid var(--border-color) !important;
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border-radius: 2rem !important;
+  padding: 0.4rem 1rem !important;
+}
+.pagination .page-link {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+}
+.pagination .page-link:hover {
+  background: var(--bg-secondary) !important;
+}
+.pagination .page-item.active .page-link {
+  background: var(--accent) !important;
+  color: white !important;
+  border-color: var(--accent) !important;
+}
+.pagination .page-item.disabled .page-link {
+  opacity: 0.5 !important;
+}
+
+/* ── Skeleton loading ── */
+.skeleton {
+  background: var(--bg-secondary) !important;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ── Side modal ── */
+.side-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--bg-card) !important;
+  box-shadow: -2px 0 12px var(--shadow);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+}
+.side-modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color) !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-secondary) !important;
+}
+.side-modal-header h5 {
+  color: var(--text-primary) !important;
+  margin: 0;
+}
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary) !important;
+}
+.close-modal:hover {
+  color: #ef4444 !important;
+}
+.side-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  color: var(--text-primary) !important;
+}
+.side-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1190;
+}
+
+/* ── Popup Modal ── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  backdrop-filter: blur(2px);
+}
+.modal-content {
+  background: var(--bg-card) !important;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 1.5rem;
+  animation: fadeInUp 0.2s ease-out;
+  color: var(--text-primary) !important;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary) !important;
+}
+.modal-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+.modal-body h2 {
+  color: var(--accent) !important;
+}
+.modal-body p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .store-products-container { padding: 1rem; }
+  .med-table th, .med-table td { padding: 0.75rem; }
+  .pagination-controls { flex-direction: column; align-items: stretch; }
+  .side-modal { width: 100%; }
+}
+@media (max-width: 640px) {
+  .store-products-container { padding: 1rem; }
+  .products-grid { grid-template-columns: 1fr; }
+  .page-title { font-size: 1.5rem; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   FIX: Expand content when sidebar is hidden
+   ============================================================ */
+
+/* When sidebar is closed, remove max-width and center margin */
+.store-sidebar.store-closed ~ .store-main-wrapper .store-products-container {
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}

@@ -1,0 +1,167 @@
+/* delivery-order-requests.css – no Bootstrap, uses delivery variables */
+
+.order-requests-container {
+  background: var(--delivery-bg-page, #f8fafc);
+  color: var(--delivery-text-primary, #0f172a);
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
+}
+
+/* ── Header ── */
+.order-requests-header h4 {
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  color: var(--delivery-text-primary, #0f172a);
+}
+.order-requests-count {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--delivery-text-secondary, #6c757d);
+}
+
+/* ── Loading ── */
+.order-requests-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+/* ── Empty state ── */
+.order-requests-empty {
+  text-align: center;
+  padding: 3rem 0;
+}
+.order-requests-empty h5 {
+  color: var(--delivery-text-primary, #0f172a);
+  font-weight: 600;
+}
+
+/* ── Table ── */
+.order-requests-table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--delivery-border, #e2e8f0);
+  background: var(--delivery-bg-card, #ffffff);
+  box-shadow: var(--delivery-shadow, 0 2px 8px rgba(0,0,0,0.04));
+}
+
+.order-requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: var(--delivery-text-primary, #0f172a);
+}
+
+.order-requests-table thead th {
+  background: var(--delivery-bg-page, #f8fafc);
+  color: var(--delivery-text-secondary, #475569);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--delivery-border, #e2e8f0);
+}
+
+.order-requests-table tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--delivery-border, #e2e8f0);
+  vertical-align: middle;
+}
+
+.order-requests-table tbody tr:hover {
+  background: var(--delivery-bg-page, #f8fafc);
+}
+
+/* ── Product name ── */
+.order-product-name {
+  font-weight: 600;
+  color: var(--delivery-text-primary, #0f172a);
+}
+.order-product-qty {
+  color: var(--delivery-text-secondary, #6c757d);
+  font-size: 0.8rem;
+}
+
+/* ── Order code & date ── */
+.order-code {
+  font-weight: 600;
+  color: var(--delivery-text-primary, #0f172a);
+}
+.order-date {
+  color: var(--delivery-text-secondary, #6c757d);
+  font-size: 0.8rem;
+}
+
+/* ── Price & prepayment ── */
+.order-price {
+  font-weight: 600;
+  color: var(--delivery-accent, #4f46e5);
+}
+.order-prepayment {
+  color: var(--delivery-text-secondary, #6c757d);
+  font-size: 0.8rem;
+}
+
+/* ── Store & customer ── */
+.order-store,
+.order-customer {
+  color: var(--delivery-text-primary, #0f172a);
+}
+
+/* ── Status badge ── */
+.order-status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.order-status-confirmed {
+  background: #0dcaf0;
+  color: #000;
+}
+
+/* ── Action buttons ── */
+.order-btn {
+  border: none;
+  padding: 0.25rem 0.9rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.25rem;
+}
+.order-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.order-btn-accept {
+  background: #198754;
+  color: #fff;
+}
+.order-btn-accept:hover:not(:disabled) {
+  background: #157347;
+}
+.order-btn-reject {
+  background: #dc3545;
+  color: #fff;
+}
+.order-btn-reject:hover:not(:disabled) {
+  background: #bb2d3b;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .order-requests-table {
+    font-size: 0.8rem;
+  }
+  .order-requests-table th,
+  .order-requests-table td {
+    padding: 0.5rem 0.4rem;
+  }
+  .order-btn {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+  }
+}

@@ -1,0 +1,103 @@
+/* app/All-store-management/store-theme.css */
+
+/* ─── Light theme (default) ─── */
+.store-theme-wrapper.light {
+  --store-bg-primary: #ffffff;
+  --store-bg-secondary: #f8fafc;
+  --store-bg-card: #ffffff;
+  --store-text-primary: #0f172a;
+  --store-text-secondary: #475569;
+  --store-border-color: #e2e8f0;
+  --store-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --store-accent: #4f46e5;
+  --store-accent-hover: #4338ca;
+  --store-input-bg: #ffffff;
+  --store-input-border: #d1d5db;
+}
+
+/* ─── Dark theme ─── */
+.store-theme-wrapper.dark {
+  --store-bg-primary: #0f172a;
+  --store-bg-secondary: #1e293b;
+  --store-bg-card: #1e293b;
+  --store-text-primary: #f1f5f9;
+  --store-text-secondary: #94a3b8;
+  --store-border-color: #334155;
+  --store-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --store-accent: #818cf8;
+  --store-accent-hover: #6366f1;
+  --store-input-bg: #1e293b;
+  --store-input-border: #475569;
+}
+
+/* ─── Map common variable names to store variables ─── */
+.store-theme-wrapper {
+  --bg-primary: var(--store-bg-primary);
+  --bg-secondary: var(--store-bg-secondary);
+  --bg-card: var(--store-bg-card);
+  --text-primary: var(--store-text-primary);
+  --text-secondary: var(--store-text-secondary);
+  --border-color: var(--store-border-color);
+  --shadow: var(--store-shadow);
+  --accent: var(--store-accent);
+  --accent-hover: var(--store-accent-hover);
+  --input-bg: var(--store-input-bg);
+  --input-border: var(--store-input-border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ─── Override Bootstrap/utility classes ─── */
+.store-theme-wrapper .bg-white { background-color: var(--bg-card) !important; }
+.store-theme-wrapper .bg-light { background-color: var(--bg-secondary) !important; }
+.store-theme-wrapper .text-dark { color: var(--text-primary) !important; }
+.store-theme-wrapper .text-muted { color: var(--text-secondary) !important; }
+.store-theme-wrapper .border { border-color: var(--border-color) !important; }
+.store-theme-wrapper .shadow-sm { box-shadow: var(--shadow) !important; }
+
+.store-theme-wrapper .card {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+.store-theme-wrapper .form-control,
+.store-theme-wrapper .form-select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+.store-theme-wrapper .form-control:focus,
+.store-theme-wrapper .form-select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25) !important;
+}
+
+.store-theme-wrapper .table thead th {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+.store-theme-wrapper .table td {
+  border-bottom-color: var(--border-color) !important;
+}
+
+.store-theme-wrapper .dropdown-menu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+.store-theme-wrapper .dropdown-item {
+  color: var(--text-primary) !important;
+}
+.store-theme-wrapper .dropdown-item:hover {
+  background-color: var(--bg-secondary) !important;
+}
+
+.store-theme-wrapper .modal-content {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+.store-theme-wrapper .modal-header,
+.store-theme-wrapper .modal-footer {
+  border-color: var(--border-color) !important;
+}

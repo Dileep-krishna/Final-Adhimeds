@@ -1,0 +1,420 @@
+/* ---------- FADE ANIMATIONS ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- SLIDE ANIMATIONS ---------- */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- BOUNCE & ELASTIC ---------- */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ---------- ROTATE & SPIN ---------- */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- ZOOM / SCALE ---------- */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- GLOW & SHIMMER ---------- */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ---------- FLOATING ---------- */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ============================================
+   ✨ FIXED WHITE UTILITIES (theme‑independent)
+   ============================================ */
+.text-fixed-white {
+  color: #ffffff !important;
+}
+
+/* ✅ FIXED: background is now white, not red */
+.bg-fixed-white {
+  background-color: #ffffff !important;
+}
+
+.border-fixed-white {
+  border-color: #ffffff !important;
+}
+
+/* Optional: white shimmer for skeletons that stay light even in dark mode */
+@keyframes shimmerWhite {
+  0% {
+    background-position: -200% 0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #ffffff 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+  }
+  100% {
+    background-position: 200% 0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #ffffff 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+  }
+}
+.animate-shimmer-white {
+  animation: shimmerWhite 1.5s infinite;
+}
+
+/* ---------- UTILITY CLASSES (apply on elements) ---------- */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+.animate-fade-down {
+  animation: fadeInDown 0.6s ease forwards;
+}
+.animate-fade-left {
+  animation: fadeInLeft 0.6s ease forwards;
+}
+.animate-fade-right {
+  animation: fadeInRight 0.6s ease forwards;
+}
+.animate-slide-left {
+  animation: slideInLeft 0.5s ease forwards;
+}
+.animate-slide-right {
+  animation: slideInRight 0.5s ease forwards;
+}
+.animate-slide-up {
+  animation: slideInUp 0.5s ease forwards;
+}
+.animate-slide-down {
+  animation: slideInDown 0.5s ease forwards;
+}
+.animate-bounce {
+  animation: bounce 1s ease infinite;
+}
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+.animate-rotate-in {
+  animation: rotateIn 0.5s ease forwards;
+}
+.animate-zoom-in {
+  animation: zoomIn 0.4s ease forwards;
+}
+.animate-zoom-out {
+  animation: zoomOut 0.4s ease forwards;
+}
+.animate-glow {
+  animation: glowPulse 2s infinite;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Staggered delays (for lists) */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* Hover animations */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+.hover-grow {
+  transition: transform 0.2s ease;
+}
+.hover-grow:hover {
+  transform: scale(1.02);
+}
+.hover-glow {
+  transition: box-shadow 0.2s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+/* ============================================
+   LOGIN PAGE – FORCE LIGHT MODE (with placeholder fix)
+   ============================================ */
+
+.login-page {
+  --bg-secondary: #f8fafc !important;
+  --bg-card: #ffffff !important;
+  --text-primary: #0f172a !important;
+  --text-secondary: #475569 !important;
+  --border-color: #e2e8f0 !important;
+  --input-bg: #ffffff !important;
+  --input-border: #d1d5db !important;
+  --accent: #4f46e5 !important;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.login-page .bg-light {
+  background-color: #f8fafc !important;
+}
+.login-page .bg-white {
+  background-color: #ffffff !important;
+}
+.login-page .card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+.login-page .text-primary {
+  color: #4f46e5 !important;
+}
+.login-page .text-secondary {
+  color: #475569 !important;
+}
+.login-page .text-muted {
+  color: #6c757d !important;
+}
+.login-page .form-control {
+  background: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #0f172a !important;
+}
+
+/* ✅ PLACEHOLDER FIX – visible grey text on white background */
+.login-page .form-control::placeholder {
+  color: #6c757d !important;
+  opacity: 1 !important;
+}
+
+/* For older browsers (Safari, Firefox) */
+.login-page .form-control::-webkit-input-placeholder {
+  color: #6c757d !important;
+  opacity: 1 !important;
+}
+.login-page .form-control::-moz-placeholder {
+  color: #6c757d !important;
+  opacity: 1 !important;
+}
+.login-page .form-control:-ms-input-placeholder {
+  color: #6c757d !important;
+  opacity: 1 !important;
+}
+
+.login-page .input-group-text {
+  background: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #475569 !important;
+}
+.login-page .form-check-input {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+.login-page .form-check-input:checked {
+  background-color: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+}
+.login-page .form-check-label {
+  color: #475569 !important;
+}
+.login-page .btn-dark {
+  background-color: #0a2b4e !important;
+  border-color: #0a2b4e !important;
+  color: #ffffff !important;
+}
+.login-page .btn-dark:hover {
+  background-color: #051a2e !important;
+}

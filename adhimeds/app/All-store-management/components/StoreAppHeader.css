@@ -1,0 +1,55 @@
+/* StoreAppHeader.css – Themed (uses store CSS variables) */
+
+/* ── Header background, border, shadow ── */
+.store-main-wrapper .store-header-wrapper.bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+.store-main-wrapper .store-header-wrapper.border-bottom {
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.store-main-wrapper .store-header-wrapper.shadow-sm {
+  box-shadow: var(--shadow) !important;
+}
+
+/* ── Buttons inside header ── */
+.store-main-wrapper .store-header-wrapper .btn-outline-secondary {
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  background: transparent !important;
+}
+.store-main-wrapper .store-header-wrapper .btn-outline-secondary:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* ── Dropdowns inside header ── */
+.store-main-wrapper .store-header-wrapper .dropdown-menu {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+}
+.store-main-wrapper .store-header-wrapper .dropdown-item {
+  color: var(--text-primary) !important;
+}
+.store-main-wrapper .store-header-wrapper .dropdown-item:hover {
+  background: var(--bg-secondary) !important;
+}
+
+/* ── Icons and text ── */
+.store-main-wrapper .store-header-wrapper .bi-list,
+.store-main-wrapper .store-header-wrapper .bi-x-lg,
+.store-main-wrapper .store-header-wrapper .bi-three-dots-vertical {
+  color: var(--text-primary) !important;
+}
+
+/* ── Any other Bootstrap utility overrides ── */
+.store-main-wrapper .store-header-wrapper .text-dark {
+  color: var(--text-primary) !important;
+}
+
+/* ── Theme toggle button icon ── */
+.store-main-wrapper .store-header-wrapper .theme-toggle-icon {
+  color: var(--text-primary) !important;
+}

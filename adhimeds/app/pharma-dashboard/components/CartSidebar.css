@@ -1,0 +1,90 @@
+/* SIDEBAR WIDTH FIX */
+.cart-sidebar {
+  width: 500px !important;
+}
+
+@media (max-width: 768px) {
+  .cart-sidebar {
+    width: 100% !important;
+  }
+}
+
+/* BODY */
+.cart-sidebar-body {
+  background: #f8f9fb;
+}
+
+/* PRODUCT */
+.product-header {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.product-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.product-icon {
+  font-size: 60px;
+  opacity: 0.6;
+}
+
+/* STORE CARD */
+.store-card-new {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+/* HEADER */
+.store-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+/* DETAILS */
+.store-details {
+  font-size: 12.5px;
+  color: #555;
+  margin-top: 6px;
+}
+
+/* ACTION */
+.store-actions {
+  margin-top: 10px;
+}
+
+.qty-input {
+  width: 70px;
+}
+
+/* BUTTON */
+.add-btn {
+  background-color: #ff6b6b;
+  border: none;
+}
+
+.add-btn:hover {
+  background-color: #ff5252;
+}
+
+/* WARNING */
+.qty-warning {
+  font-size: 11px;
+  color: red;
+  margin-top: 4px;
+}
+/* Larger toast notifications */
+.custom-toast {
+  font-size: 1.1rem !important;
+  padding: 16px 24px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+  min-width: 320px !important;
+}
+.custom-toast .sonner-toast-description {
+  font-size: 0.95rem;
+}

@@ -1,0 +1,12 @@
+.app-footer {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  /* Remove any width, display, justify – handled by parent */
+}
+
+.app-footer p {
+  margin: 0;
+  text-align: center;
+}

@@ -1,0 +1,424 @@
+/* add-product.css – Theme-Aware + Enhanced fonts & animations */
+
+.add-product-page {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    animation: pageFadeIn 0.4s ease-out;
+}
+
+@keyframes pageFadeIn {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.row.g-4 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.form-card {
+    background: var(--bg-card);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    overflow: visible;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.form-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -8px var(--shadow);
+}
+
+.card-header {
+    background: var(--bg-secondary);
+    padding: 1rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.card-body {
+    padding: 1.5rem;
+    overflow: visible;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.form-control, .form-select {
+    font-size: 1rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--input-border);
+    transition: all 0.2s;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+textarea.form-control {
+    font-size: 1rem;
+}
+
+/* ── FILE INPUTS ── */
+input[type="file"].form-control {
+    background: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--input-border) !important;
+    padding: 0.4rem 0.75rem !important;
+}
+input[type="file"]::file-selector-button {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.3rem 0.8rem !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
+    margin-right: 0.75rem !important;
+}
+input[type="file"]::file-selector-button:hover {
+    background: var(--border-color) !important;
+}
+input[type="file"] {
+    color: var(--text-secondary) !important;
+}
+input[type="file"]::-webkit-file-upload-button {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.3rem 0.8rem !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
+    margin-right: 0.75rem !important;
+}
+input[type="file"]::-webkit-file-upload-button:hover {
+    background: var(--border-color) !important;
+}
+
+/* Toggle switches */
+.toggle-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+    margin-right: 12px;
+}
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: 0.3s;
+    border-radius: 26px;
+}
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--bg-card);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+input:checked + .toggle-slider {
+    background-color: var(--accent);
+}
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+.toggle-label {
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.form-check-input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.2rem;
+}
+.form-check-label {
+    font-size: 0.95rem;
+    margin-left: 0.5rem;
+    color: var(--text-primary);
+}
+
+.btn-save, .btn-secondary, .btn-danger {
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 0.95rem;
+}
+.btn-save {
+    background: var(--accent);
+    color: white;
+}
+.btn-save:hover {
+    background: var(--accent-hover);
+    transform: scale(1.02);
+}
+.btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+.btn-secondary:hover {
+    background: var(--border-color);
+    transform: scale(1.02);
+}
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
+.btn-danger:hover {
+    background: #dc2626;
+    transform: scale(1.02);
+}
+
+/* Tags */
+.tag-input-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+    border: 1px solid var(--input-border) !important;
+    border-radius: 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
+    background: var(--input-bg) !important;
+    min-height: 50px !important;
+    width: 100% !important;
+}
+.tag {
+    background: var(--bg-secondary) !important;
+    padding: 6px 12px !important;
+    border-radius: 2rem !important;
+    font-size: 0.9rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 500;
+    transition: background 0.2s;
+    color: var(--text-primary);
+}
+.tag i {
+    cursor: pointer !important;
+    font-size: 0.9rem !important;
+    opacity: 0.7;
+    color: var(--text-secondary);
+}
+.tag i:hover {
+    opacity: 1;
+    color: var(--text-primary);
+}
+.tag-input {
+    border: none !important;
+    flex: 1 !important;
+    min-width: 120px !important;
+    padding: 6px 0 !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 0.95rem !important;
+    color: var(--text-primary);
+}
+.tag-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Gallery */
+.gallery-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+.gallery-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 0.75rem;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+}
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+.gallery-item i {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.6);
+    padding: 4px;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.7rem;
+}
+
+.preset-note-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.table {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+.table input {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+}
+.table input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+/* ── REACT-SELECT OVERRIDES (FULLY THEME-AWARE) ── */
+.react-select__control {
+    min-height: 44px !important;
+    border-radius: 0.75rem !important;
+    border-color: var(--input-border) !important;
+    background: var(--input-bg) !important;
+    box-shadow: none !important;
+}
+.react-select__control:hover {
+    border-color: var(--accent) !important;
+}
+.react-select__control--is-focused {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2) !important;
+}
+.react-select__value-container {
+    padding: 2px 8px !important;
+}
+.react-select__input input {
+    color: var(--text-primary) !important;
+}
+.react-select__input input:focus {
+    color: var(--text-primary) !important;
+}
+.react-select__single-value {
+    color: var(--text-primary) !important;
+}
+.react-select__placeholder {
+    color: var(--text-secondary) !important;
+}
+.react-select__menu {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0.75rem !important;
+    box-shadow: var(--shadow) !important;
+    z-index: 9999 !important;
+}
+.react-select__menu-list {
+    background: var(--bg-card) !important;
+    padding: 4px 0 !important;
+}
+.react-select__option {
+    padding: 8px 12px !important;
+    font-size: 0.95rem !important;
+    color: var(--text-primary) !important;
+    background: transparent !important;
+    cursor: pointer !important;
+}
+.react-select__option--is-focused {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+.react-select__option--is-selected {
+    background: var(--accent) !important;
+    color: white !important;
+}
+.react-select__multi-value {
+    background: var(--bg-secondary) !important;
+    border-radius: 2rem !important;
+}
+.react-select__multi-value__label {
+    color: var(--text-primary) !important;
+}
+.react-select__multi-value__remove {
+    color: var(--text-secondary) !important;
+}
+.react-select__multi-value__remove:hover {
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+.react-select__indicator {
+    color: var(--text-secondary) !important;
+}
+.react-select__indicator:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Ensure dropdowns are never cut off */
+.form-card, .card-body {
+    overflow: visible !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .add-product-page { padding: 0.75rem; }
+    .card-body { padding: 1rem; }
+    .page-title { font-size: 1.6rem; }
+}
+
+.auto-height-card {
+    flex: 0 0 auto !important;
+}
+
+/* ── OVERRIDE FOR COLOR OPTION ── */
+.color-option {
+    background: transparent !important;
+}
+.color-option-selected {
+    background: var(--bg-secondary) !important;
+}

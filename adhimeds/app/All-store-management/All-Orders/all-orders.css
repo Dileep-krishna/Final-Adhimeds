@@ -1,0 +1,192 @@
+/* all-orders.css – uses CSS variables, dark mode ready */
+
+.orders-page-wrapper {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ─── Card ─── */
+.orders-card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+/* ─── Order Code (normal weight) ─── */
+.orders-table .order-code {
+  font-weight: 400;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+/* ─── Header ─── */
+.orders-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.orders-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+/* ─── Filters ─── */
+.orders-header .form-select,
+.orders-header .form-control {
+  height: 38px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+.orders-header .form-select:focus,
+.orders-header .form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+.orders-header .btn-primary {
+  height: 38px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  transition: 0.2s;
+}
+.orders-header .btn-primary:hover {
+  background: var(--accent-hover);
+}
+.orders-header .btn-danger {
+  height: 38px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: #dc3545;
+  border: none;
+  color: #fff;
+  transition: 0.2s;
+}
+.orders-header .btn-danger:hover {
+  background: #c82333;
+}
+
+/* ─── Table ─── */
+.orders-table {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+.orders-table thead th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.orders-table tbody td {
+  padding: 12px 14px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+.orders-table tbody tr:hover {
+  background: var(--bg-secondary);
+}
+
+/* ─── Status Badge ─── */
+.status-badge {
+  display: inline-block;
+  background: #ff3f73;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ─── Action Buttons ─── */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.action-btn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+.action-btn:hover {
+  transform: scale(1.08);
+  background: var(--border-color);
+}
+.action-btn.view {
+  background: #edf7ff;
+  color: #2196f3;
+}
+.action-btn.view:hover {
+  background: #2196f3;
+  color: #fff;
+}
+.action-btn.download {
+  background: #f3efff;
+  color: #6c63ff;
+}
+.action-btn.download:hover {
+  background: #6c63ff;
+  color: #fff;
+}
+.action-btn.delete {
+  background: #ffeef1;
+  color: #ff4d6d;
+}
+.action-btn.delete:hover {
+  background: #ff4d6d;
+  color: #fff;
+}
+
+/* ─── Empty State ─── */
+.empty-title {
+  color: var(--text-primary) !important;
+}
+.empty-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+/* ─── Order Date ─── */
+.order-date {
+  color: var(--text-secondary) !important;
+  font-size: 0.75rem;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .orders-header .form-select,
+  .orders-header .form-control,
+  .orders-header .btn-primary,
+  .orders-header .btn-danger {
+    width: 100%;
+  }
+  .orders-table thead th,
+  .orders-table tbody td {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+  .action-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}

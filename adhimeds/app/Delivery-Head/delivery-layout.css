@@ -1,0 +1,116 @@
+/* ─── Import theme variables ─── */
+@import "./delivery-theme.css";
+
+/* ─── Layout wrapper ─── */
+.delivery-layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: var(--delivery-bg-page);
+  color: var(--delivery-text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Main content ─── */
+.delivery-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--delivery-bg-page);
+  color: var(--delivery-text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Desktop: push main wrapper to the right of the sidebar */
+@media (min-width: 769px) {
+  .delivery-main-content {
+    margin-left: 280px; /* sidebar width */
+    transition: margin-left 0.3s ease;
+  }
+
+  /* ✅ FIX: When sidebar is closed, remove the margin so content expands */
+  .delivery-sidebar.delivery-closed ~ .delivery-main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Mobile: no margin */
+@media (max-width: 768px) {
+  .delivery-main-content {
+    margin-left: 0;
+  }
+}
+
+/* ─── Container ─── */
+.container-fluid {
+  padding: 1.5rem;
+  background: var(--delivery-bg-page);
+  color: var(--delivery-text-primary);
+  flex: 1;
+}
+
+/* ─── Backdrop ─── */
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .backdrop.show {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1030;
+  }
+}
+
+/* ─── Card styles ─── */
+.delivery-card {
+  background: var(--delivery-bg-card);
+  border: 1px solid var(--delivery-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--delivery-shadow);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* ─── Theme toggle in header ─── */
+.delivery-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  background: var(--delivery-bg-page);
+  border: 1px solid var(--delivery-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.delivery-theme-toggle .theme-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--delivery-text-secondary);
+}
+
+.delivery-theme-toggle .form-switch {
+  margin-bottom: 0;
+}
+
+.delivery-theme-toggle .form-check-input {
+  cursor: pointer;
+  width: 40px;
+  height: 20px;
+  background-size: 14px;
+}
+
+.delivery-theme-toggle .form-check-input:checked {
+  background-color: var(--delivery-accent);
+  border-color: var(--delivery-accent);
+}
+
+.delivery-theme-toggle .form-check-input:focus {
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+}

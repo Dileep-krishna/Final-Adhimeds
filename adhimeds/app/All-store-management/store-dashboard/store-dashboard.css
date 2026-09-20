@@ -1,0 +1,111 @@
+/* store-dashboard.css – Themed (light/dark) */
+
+.store-dashboard {
+  max-width: 100%;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  min-height: 100vh;
+}
+
+.store-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.store-stat-card:hover {
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.store-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.store-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.store-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.store-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+  height: 100%;
+  transition: box-shadow 0.2s;
+}
+.store-card:hover {
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.store-month-stat {
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  transition: background 0.15s;
+}
+.store-month-stat:hover {
+  background: var(--border-color);
+}
+
+.store-month-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.store-month-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--text-primary);
+}
+
+.btn-primary {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+.btn-primary:hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+
+.btn-outline-primary {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.btn-outline-primary:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--accent) !important;
+}
+
+@media (max-width: 768px) {
+  .store-stat-card { padding: 16px; }
+  .store-stat-value { font-size: 1.2rem; }
+  .store-card { padding: 16px; }
+}

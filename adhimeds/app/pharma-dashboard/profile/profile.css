@@ -1,0 +1,100 @@
+/* MAIN */
+.profile-container {
+  background: #f5f6fa;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.link {
+  color: #5a3fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* MENU */
+.menu-title {
+  font-size: 14px;
+  color: #888;
+}
+
+.menu-item {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu-item:hover {
+  background: #f5f5f5;
+}
+
+.menu-item.active {
+  background: #eef2ff;
+  color: #5a3fff;
+  border-radius: 5px;
+}
+
+/* RIGHT SIDE */
+.profile-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* EDIT */
+.edit-link {
+  color: #5a3fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* STEPS */
+.steps {
+  position: relative;
+}
+
+.step {
+  font-size: 13px;
+  color: #aaa;
+  position: relative;
+}
+
+.step.active {
+  color: #20c997;
+  font-weight: 500;
+}
+
+/* LINE BETWEEN STEPS */
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ddd;
+  z-index: 0;
+}
+
+.step::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #20c997;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}

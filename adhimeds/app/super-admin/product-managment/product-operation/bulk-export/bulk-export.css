@@ -1,0 +1,154 @@
+/* ===== BULK EXPORT – THEME‑AWARE ===== */
+
+.bulk-export-page {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+/* ─── Form Card ─── */
+.form-card {
+  background: var(--bg-card);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  background: var(--bg-secondary);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* ─── Instructions Box ─── */
+.instructions-box {
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border-left: 4px solid var(--accent);
+}
+.instructions-box li {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.instructions-box li:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Form Labels ─── */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* ─── Form Select ─── */
+.form-select {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+/* ─── Format Buttons ─── */
+.format-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.format-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.format-btn:hover:not(.active) {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* ─── Field Selection Grid ─── */
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+}
+.field-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.field-checkbox input {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+.field-checkbox span {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* ─── Alert Note ─── */
+.alert-note {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ─── Export Button ─── */
+.btn-export {
+  background: var(--accent);
+  border: none;
+  padding: 0.6rem 1.8rem;
+  border-radius: 2rem;
+  color: #fff;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-export:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  .form-select {
+    max-width: 100%;
+  }
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}

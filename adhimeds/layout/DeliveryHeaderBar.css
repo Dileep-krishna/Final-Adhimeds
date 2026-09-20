@@ -1,0 +1,249 @@
+/* delivery-header-bar.css – compact header with dark mode support */
+
+/* ─── Header wrapper ─── */
+.delivery-header-wrapper {
+  background: var(--delivery-header-bg, #ffffff);
+  border-bottom: 1px solid var(--delivery-border, #e2e8f0);
+  box-shadow: var(--delivery-shadow, 0 1px 3px rgba(0, 0, 0, 0.04));
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  
+}
+
+/* ─── Header row – compact height ─── */
+.delivery-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0.4rem 0; */
+  min-height: 48px;
+}
+
+/* ─── Left section ─── */
+.delivery-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ─── Sidebar toggle button ─── */
+.sidebar-toggle-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--delivery-border, #d1d5db);
+  background: transparent;
+  color: var(--delivery-text-primary, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.sidebar-toggle-btn:hover {
+  background: var(--delivery-bg-page, #f1f5f9);
+  border-color: var(--delivery-border, #cbd5e1);
+}
+.sidebar-toggle-btn i {
+  font-size: 1.1rem;
+  color: var(--delivery-text-primary, #0f172a);
+}
+
+/* ─── Logo ─── */
+.delivery-header-logo-link img {
+  max-height: 28px;
+  width: auto;
+}
+
+/* ─── Right section ─── */
+.delivery-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ─── Theme Toggle ─── */
+.delivery-theme-toggle {
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  background: var(--delivery-bg-page, #f8fafc);
+  border: 1px solid var(--delivery-border, #e2e8f0);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.delivery-theme-toggle .theme-icon {
+  font-size: 0.8rem;
+  color: var(--delivery-text-secondary, #475569);
+}
+.delivery-theme-toggle .form-switch {
+  margin-bottom: 0;
+}
+.delivery-theme-toggle .form-check-input {
+  cursor: pointer;
+  width: 28px;
+  height: 15px;
+  background-size: 12px;
+  border-color: var(--delivery-border, #d1d5db);
+}
+.delivery-theme-toggle .form-check-input:checked {
+  background-color: var(--delivery-accent, #4f46e5);
+  border-color: var(--delivery-accent, #4f46e5);
+}
+.delivery-theme-toggle .form-check-input:focus {
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+}
+
+/* ─── Mobile menu button ─── */
+.delivery-mobile-menu-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--delivery-border, #d1d5db);
+  background: transparent;
+  color: var(--delivery-text-primary, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.delivery-mobile-menu-btn:hover {
+  background: var(--delivery-bg-page, #f1f5f9);
+}
+
+/* ─── Mobile dropdown ─── */
+.delivery-mobile-dropdown {
+  border-top-color: var(--delivery-border, #e2e8f0) !important;
+}
+
+/* ─── Dropdowns ─── */
+.delivery-header-wrapper .dropdown-menu {
+  background: var(--delivery-bg-card, #ffffff) !important;
+  border: 1px solid var(--delivery-border, #e2e8f0) !important;
+}
+.delivery-header-wrapper .dropdown-item {
+  color: var(--delivery-text-primary, #0f172a) !important;
+}
+.delivery-header-wrapper .dropdown-item:hover {
+  background: var(--delivery-bg-page, #f1f5f9) !important;
+}
+
+/* ─── Override Bootstrap utilities ─── */
+.delivery-header-wrapper .text-dark {
+  color: var(--delivery-text-primary, #0f172a) !important;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .delivery-header-row {
+    padding: 0.3rem 0;
+    min-height: 42px;
+  }
+  .sidebar-toggle-btn,
+  .delivery-mobile-menu-btn {
+    width: 2rem;
+    height: 2rem;
+  }
+  .sidebar-toggle-btn i {
+    font-size: 1rem;
+  }
+  .delivery-theme-toggle {
+    padding: 0.15rem 0.4rem;
+  }
+  .delivery-theme-toggle .theme-icon {
+    font-size: 0.7rem;
+  }
+  .delivery-theme-toggle .form-check-input {
+    width: 24px;
+    height: 13px;
+  }
+  .delivery-header-logo-link img {
+    max-height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .delivery-header-row {
+    padding: 0.2rem 0;
+    min-height: 38px;
+  }
+  .delivery-header-right {
+    gap: 0.4rem;
+  }
+  .sidebar-toggle-btn {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .sidebar-toggle-btn i {
+    font-size: 0.9rem;
+  }
+  .delivery-theme-toggle {
+    padding: 0.1rem 0.3rem;
+  }
+  .delivery-theme-toggle .theme-icon {
+    font-size: 0.6rem;
+  }
+  .delivery-theme-toggle .form-check-input {
+    width: 20px;
+    height: 11px;
+  }
+}
+/* ─── Search Bar ─── */
+.delivery-sidebar-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 1rem;
+  background: var(--delivery-bg-page, #f1f5f9);
+  border-radius: 8px;
+  border: 1px solid var(--delivery-border, #e2e8f0);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.delivery-sidebar-search:focus-within {
+  border-color: var(--delivery-accent, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+.delivery-sidebar-search i {
+  color: var(--delivery-text-secondary, #6c757d);
+  font-size: 1rem;
+}
+.delivery-sidebar-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--delivery-text-primary, #0f172a);
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+}
+.delivery-sidebar-search-input::placeholder {
+  color: var(--delivery-text-secondary, #94a3b8);
+}
+.delivery-search-clear {
+  background: transparent;
+  border: none;
+  color: var(--delivery-text-secondary, #6c757d);
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.delivery-search-clear:hover {
+  background: var(--delivery-bg-page, #e2e8f0);
+  color: var(--delivery-text-primary, #0f172a);
+}
+
+/* ─── No Results ─── */
+.delivery-no-search-results {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: var(--delivery-text-secondary, #6c757d);
+  font-size: 0.9rem;
+}
+.delivery-no-search-results i {
+  font-size: 1.2rem;
+}

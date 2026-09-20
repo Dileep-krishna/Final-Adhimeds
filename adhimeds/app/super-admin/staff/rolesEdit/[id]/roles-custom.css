@@ -1,0 +1,228 @@
+/* ========== CONTAINER ========== */
+.roles-design-page {
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+}
+
+/* ========== ROLE INFORMATION CARD ========== */
+.role-info-card {
+    background: var(--bg-card);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+.role-info-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.role-info-card .form-group {
+    margin-bottom: 0;
+}
+.role-info-card label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+.role-info-card .form-control {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    transition: 0.2s;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+.role-info-card .form-control:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 59, 130, 246), 0.1);
+}
+
+/* ========== PERMISSIONS SECTION ========== */
+.permissions-section {
+    margin: 2rem 0;
+}
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.role-highlight {
+    background: var(--bg-secondary);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.permissions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+}
+.permission-card {
+    background: var(--bg-card);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.2s;
+}
+.permission-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.permission-header {
+    background: var(--bg-secondary);
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.permission-body {
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.permission-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    transition: color 0.2s;
+}
+.permission-item:hover {
+    color: var(--text-primary);
+}
+
+/* ✨ TOGGLE SWITCH STYLES – replaces native checkbox */
+.permission-item input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: 0.3s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.permission-item input:checked + .toggle-slider {
+    background-color: var(--accent);
+}
+
+.permission-item input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+.permission-label {
+    flex: 1;
+    user-select: none;
+}
+
+/* ========== HINT ========== */
+.permission-hint {
+    margin: 1.5rem 0 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+/* ========== SAVE BUTTON FOOTER ========== */
+.save-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+.btn-save-all {
+    background: var(--accent);
+    border: none;
+    padding: 0.7rem 1.8rem;
+    border-radius: 2rem;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.btn-save-all:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+.btn-save-all:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .permissions-grid {
+        grid-template-columns: 1fr;
+    }
+    .role-info-card .form-control {
+        max-width: 100%;
+    }
+}

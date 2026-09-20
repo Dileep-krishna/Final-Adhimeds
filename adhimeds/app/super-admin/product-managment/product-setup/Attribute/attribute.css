@@ -1,0 +1,359 @@
+/* attribute.css – Product‑Table Style (clean, modern, themed) */
+
+.attributes-container {
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.btn-add {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+.btn-add:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Table container – like a card */
+.table-responsive {
+  background: var(--bg-card);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+}
+
+.med-table {
+  width: 100%;
+  background: var(--bg-card);
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+}
+
+.med-table th,
+.med-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.med-table th {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.med-table tbody tr:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+
+.med-table tbody tr:hover {
+  background-color: var(--bg-secondary);
+}
+
+/* Value chips – cleaner pills */
+.value-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.value-chip {
+  background: var(--bg-secondary);
+  color: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+/* Action buttons – minimal */
+.btn-icon {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin: 0 0.2rem;
+  border-radius: 0.3rem;
+  transition: all 0.2s;
+}
+
+.btn-icon.edit {
+  color: var(--accent);
+}
+.btn-icon.edit:hover {
+  background-color: var(--bg-secondary);
+  transform: scale(1.05);
+}
+
+.btn-icon.delete {
+  color: #dc3545;
+}
+.btn-icon.delete:hover {
+  background-color: #fee9eb;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-container {
+  background: var(--bg-card);
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--accent);
+  color: white;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.modal-header h5 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: white;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.close-modal:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  display: block;
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.4rem;
+  transition: border-color 0.2s;
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+.value-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  align-items: center;
+}
+
+.btn-remove-value {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-remove-value:hover {
+  transform: scale(1.1);
+}
+
+.btn-add-more {
+  background: none;
+  border: 1px dashed var(--accent);
+  color: var(--accent);
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-add-more:hover {
+  background: var(--bg-secondary);
+  border-style: solid;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 0 0 1rem 1rem;
+}
+
+.btn-cancel {
+  background: var(--bg-secondary);
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.btn-cancel:hover {
+  background: var(--border-color);
+}
+
+.btn-save {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-save:hover {
+  background: var(--accent-hover);
+}
+
+/* Attribute Values with Pack Sizes */
+.value-pack-group {
+  margin-bottom: 0.75rem;
+}
+
+.value-input-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.value-input {
+  flex: 2;
+  min-width: 120px;
+}
+
+.pack-input {
+  flex: 3;
+  min-width: 180px;
+}
+
+.btn-remove-value {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-remove-value:hover {
+  color: #a71d2a;
+}
+
+@media (max-width: 768px) {
+  .value-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-remove-value {
+    align-self: flex-end;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .attributes-container {
+    padding: 1rem;
+  }
+  .page-title {
+    font-size: 1.4rem;
+  }
+  .med-table th,
+  .med-table td {
+    padding: 0.6rem;
+  }
+  .value-chip {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .modal-container {
+    width: 95%;
+    margin: 1rem;
+  }
+}

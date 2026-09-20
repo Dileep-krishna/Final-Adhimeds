@@ -1,0 +1,63 @@
+/* ProductViewPage.css – Themed Product Details */
+
+.product-view-wrapper {
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.product-view-wrapper .product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.product-view-wrapper .product-card .card-body {
+  padding: 1.5rem;
+}
+
+.product-view-wrapper .product-title {
+  color: var(--text-primary);
+}
+
+.product-view-wrapper .product-meta {
+  color: var(--text-secondary);
+}
+
+.product-view-wrapper .product-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.product-view-wrapper .product-value {
+  color: var(--text-primary);
+}
+
+.product-view-wrapper .product-description {
+  color: var(--text-primary);
+}
+
+.product-view-wrapper .gallery-thumb {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+}
+
+.product-view-wrapper .back-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+.product-view-wrapper .back-btn:hover {
+  background: var(--bg-card);
+}
+
+.product-view-wrapper .placeholder-image {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.product-view-wrapper .rating-text {
+  color: var(--text-primary);
+}

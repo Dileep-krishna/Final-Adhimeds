@@ -1,0 +1,67 @@
+/* ─── Light theme (default) ─── */
+:root {
+  --delivery-bg-page: #f8fafc;
+  --delivery-bg-card: #ffffff;
+  --delivery-text-primary: #0f172a;
+  --delivery-text-secondary: #475569;
+  --delivery-border: #e2e8f0;
+  --delivery-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --delivery-accent: #4f46e5;
+  --delivery-accent-hover: #4338ca;
+  --delivery-header-bg: #ffffff;
+  --delivery-sidebar-bg: #ffffff;
+}
+
+/* ─── Dark theme ─── */
+.delivery-dark {
+  --delivery-bg-page: #1e293b;
+  --delivery-bg-card: #2d3748;
+  --delivery-text-primary: #f1f5f9;
+  --delivery-text-secondary: #94a3b8;
+  --delivery-border: #475569;
+  --delivery-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --delivery-accent: #818cf8;
+  --delivery-accent-hover: #6366f1;
+  --delivery-header-bg: #2d3748;
+  --delivery-sidebar-bg: #2d3748;
+}
+
+/* ─── Wrapper class ─── */
+.delivery-theme-wrapper {
+  background: var(--delivery-bg-page);
+  color: var(--delivery-text-primary);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Utility classes ─── */
+.delivery-bg-card {
+  background: var(--delivery-bg-card);
+}
+.delivery-bg-page {
+  background: var(--delivery-bg-page);
+}
+.delivery-text-primary {
+  color: var(--delivery-text-primary);
+}
+.delivery-text-secondary {
+  color: var(--delivery-text-secondary);
+}
+.delivery-border {
+  border-color: var(--delivery-border);
+}
+.delivery-shadow {
+  box-shadow: var(--delivery-shadow);
+}
+.delivery-accent {
+  color: var(--delivery-accent);
+}
+.delivery-accent-bg {
+  background: var(--delivery-accent);
+}
+:root {
+  --delivery-accent-light: #eef2ff;   /* light purple */
+}
+.delivery-dark {
+  --delivery-accent-light: #18172c;   /* dark purple – adjust as needed */
+}

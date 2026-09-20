@@ -1,0 +1,32 @@
+/* ===== STORE LAYOUT – THEMED ===== */
+
+/* Force the background and text to follow the store theme */
+.store-layout-container,
+.store-main-content {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ─── Desktop: push main wrapper to the right of the sidebar ─── */
+@media (min-width: 769px) {
+  .store-main-wrapper {
+    margin-left: 280px;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ✅ FIX: When sidebar is closed, remove the margin so content expands */
+  .store-sidebar.store-closed ~ .store-main-wrapper {
+    margin-left: 0;
+  }
+}
+
+/* ─── Mobile: no margin ─── */
+@media (max-width: 768px) {
+  .store-main-wrapper {
+    margin-left: 0;
+  }
+  .store-main-content {
+    padding: 20px 16px;
+  }
+}

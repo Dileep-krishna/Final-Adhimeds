@@ -1,0 +1,201 @@
+/* ===== COLORS PAGE – THEME AWARE ===== */
+
+/* Main container */
+.colors-page-container {
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* Headings */
+.colors-page-container h2,
+.colors-page-container .h3 {
+  color: var(--text-primary) !important;
+}
+
+/* Cards */
+.colors-page-container .card {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+}
+.colors-page-container .card-body {
+  color: var(--text-primary) !important;
+}
+.colors-page-container .card-body .text-muted {
+  color: var(--text-secondary) !important;
+}
+
+/* Tables */
+.colors-page-container .table {
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+.colors-page-container .table thead th {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+.colors-page-container .table td {
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+.colors-page-container .table tbody tr:hover {
+  background: var(--bg-secondary) !important;
+}
+.colors-page-container .table-bordered {
+  border-color: var(--border-color) !important;
+}
+.colors-page-container .table-bordered td,
+.colors-page-container .table-bordered th {
+  border-color: var(--border-color) !important;
+}
+
+/* Code block */
+.colors-page-container code {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+}
+
+/* Buttons – ensure text contrast */
+.colors-page-container .btn-success {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: white !important;
+}
+.colors-page-container .btn-success:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+.colors-page-container .btn-outline-primary {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.colors-page-container .btn-outline-primary:hover {
+  background: var(--accent) !important;
+  color: white !important;
+}
+.colors-page-container .btn-outline-danger {
+  color: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+.colors-page-container .btn-outline-danger:hover {
+  background: #ef4444 !important;
+  color: white !important;
+}
+.colors-page-container .btn-secondary {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+.colors-page-container .btn-secondary:hover {
+  background: var(--border-color) !important;
+}
+
+/* Form controls */
+.colors-page-container .form-control,
+.colors-page-container .form-select {
+  background: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+.colors-page-container .form-control:focus,
+.colors-page-container .form-select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25) !important;
+}
+.colors-page-container .form-label {
+  color: var(--text-primary) !important;
+}
+.colors-page-container .text-muted,
+.colors-page-container .form-text {
+  color: var(--text-secondary) !important;
+}
+.colors-page-container .form-control-color {
+  padding: 0.15rem !important;
+}
+
+/* Modal */
+.colors-page-container .modal-content {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+.colors-page-container .modal-header {
+  border-bottom-color: var(--border-color) !important;
+}
+.colors-page-container .modal-footer {
+  border-top-color: var(--border-color) !important;
+}
+.colors-page-container .modal-title {
+  color: var(--text-primary) !important;
+}
+.colors-page-container .modal-body {
+  color: var(--text-primary) !important;
+}
+.colors-page-container .btn-close {
+  filter: var(--btn-close-filter, none);
+}
+
+/* Switch toggle */
+.colors-page-container .form-check-label {
+  color: var(--text-primary) !important;
+}
+.colors-page-container .form-check-input:checked {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Empty state */
+.colors-page-container .text-muted {
+  color: var(--text-secondary) !important;
+}
+.colors-page-container .text-muted i {
+  color: var(--text-secondary) !important;
+}
+
+/* Spinner */
+.colors-page-container .spinner-border {
+  color: var(--accent) !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .colors-page-container {
+    padding: 1rem;
+  }
+  .colors-page-container .d-flex.justify-content-between {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.8rem;
+  }
+  .colors-page-container .btn-success {
+    width: 100%;
+    justify-content: center;
+  }
+  .colors-page-container .modal-dialog {
+    margin: 0.5rem;
+  }
+  .colors-page-container .card-body {
+    padding: 1rem;
+  }
+  .colors-page-container .table-responsive {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .colors-page-container {
+    padding: 0.6rem;
+  }
+  .colors-page-container .table td,
+  .colors-page-container .table th {
+    padding: 0.4rem 0.4rem;
+    font-size: 0.75rem;
+  }
+  .colors-page-container .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+}

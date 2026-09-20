@@ -1,0 +1,15 @@
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Optional: bell bounce while ringing */
+.bell-icon.ringing i {
+  animation: ring 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ring {
+  0% { transform: rotate(-12deg); }
+  100% { transform: rotate(12deg); }
+}

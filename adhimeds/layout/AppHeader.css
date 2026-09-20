@@ -1,0 +1,80 @@
+
+
+/* ======================================== */
+
+.app-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 80px;
+  padding-top: 10px;
+
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+
+  display: flex;
+  align-items: center;
+
+  z-index: 1050;
+
+  transition: left .3s ease, width .3s ease;
+}
+
+/* ===== Expanded Sidebar ===== */
+
+.header-expanded {
+  left: 280px;
+  width: calc(100% - 280px);
+}
+
+/* ===== Collapsed Sidebar ===== */
+
+.header-collapsed {
+  left: 90px;
+  width: calc(100% - 90px);
+}
+
+/* ======================================== */
+
+.app-header .container-fluid {
+  width: 100%;
+}
+
+/* ======================================== */
+
+.app-header-btn {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50% !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-color) !important;
+  background: transparent !important;
+
+  color: var(--text-secondary) !important;
+
+  transition: all 0.25s ease;
+}
+
+.app-header-btn:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(25deg);
+}
+
+/* ======================================== */
+
+@media (max-width: 991px) {
+  .app-header {
+    left: 0 !important;
+    width: 100% !important;
+  }
+}

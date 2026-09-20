@@ -1,0 +1,184 @@
+/* ========== GLOBAL RESET & FONTS ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* ==================================================================== */
+/* =====  THEME CSS VARIABLES – LIGHT MODE ONLY ===================== */
+/* ==================================================================== */
+
+:root {
+  /* 🔆 LIGHT MODE (default – always used outside super‑admin) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-rgb: 255, 255, 255;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-rgb: 79, 70, 229;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --header-height: 72px;
+}
+
+/* ==================================================================== */
+/* =====  OVERRIDE BOOTSTRAP UTILITY CLASSES – ALWAYS LIGHT ========== */
+/* ==================================================================== */
+
+.bg-white { background-color: var(--bg-card) !important; }
+.bg-light { background-color: var(--bg-secondary) !important; }
+.text-dark { color: var(--text-primary) !important; }
+.text-muted { color: var(--text-secondary) !important; }
+.border { border-color: var(--border-color) !important; }
+.shadow-sm { box-shadow: var(--shadow) !important; }
+
+.table thead th {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+.table td { border-bottom-color: var(--border-color) !important; }
+
+.form-control,
+.form-select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.25) !important;
+}
+
+.btn-primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+.btn-outline-secondary {
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.card {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dropdown-menu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+.dropdown-item {
+  color: var(--text-primary) !important;
+}
+.dropdown-item:hover {
+  background-color: var(--bg-secondary) !important;
+}
+
+.modal-content {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+.modal-header,
+.modal-footer {
+  border-color: var(--border-color) !important;
+}
+
+/* ==================================================================== */
+/* =====  UTILITIES & BOOTSTRAP OVERRIDES  =========================== */
+/* ==================================================================== */
+
+.cursor-pointer { cursor: pointer; }
+.rotate-180 { transform: rotate(180deg); }
+.transition-transform { transition: transform 0.2s; }
+
+.card {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.btn-success {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: white !important;
+}
+.btn-success:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+.btn-secondary:hover {
+  background-color: var(--border-color) !important;
+}
+
+.text-success {
+  color: var(--accent) !important;
+}
+
+input[type="file"] {
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--input-border) !important;
+}
+input[type="file"]::file-selector-button {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+input[type="file"]::file-selector-button:hover {
+  background: var(--border-color) !important;
+}
+
+.brand-form-container {
+  background: var(--bg-secondary) !important;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.error-message {
+  text-align: center;
+  padding: 3rem;
+  color: #dc3545;
+}
+
+.border-0 { border: none !important; }
+.shadow-sm { box-shadow: var(--shadow) !important; }
+
+:root {
+  --sidebar-expanded-width: 280px;
+  --sidebar-collapsed-width: 90px;
+  --header-height: 80px;
+}

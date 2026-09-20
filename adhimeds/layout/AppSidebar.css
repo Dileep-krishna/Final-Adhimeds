@@ -1,0 +1,782 @@
+/* ==========================================
+   AppSidebar.css
+   Part 1 - Layout & Scroll
+========================================== */
+
+.sidebar-wrapper {
+  position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 280px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 2px 0 12px var(--shadow);
+  overflow: hidden;
+  z-index: 1000;
+   
+
+
+}
+
+.sidebar-wrapper.mobile {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1050;
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+}
+
+.sidebar-wrapper.mobile.open {
+  transform: translateX(0);
+}
+
+/* ==========================================
+   React Pro Sidebar
+========================================== */
+
+.ps-sidebar-root{
+    height:100% !important;
+    width:100% !important;
+}
+
+.ps-sidebar-container{
+    display:flex !important;
+    flex-direction:column !important;
+
+    height:100% !important;
+
+    background:var(--bg-card) !important;
+    color:var(--text-primary) !important;
+
+    border:none !important;
+
+    overflow:hidden !important;
+}
+
+/* ==========================================
+   Logo
+========================================== */
+
+.sidebar-logo{
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+
+    padding:16px 18px;
+
+    border-bottom:1px solid var(--border-color);
+
+    background:var(--bg-card);
+
+}
+
+.sidebar-logo-link{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    text-decoration:none;
+
+}
+
+.sidebar-logo-avatar{
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    background:var(--bg-secondary);
+
+    box-shadow:0 0 0 2px var(--accent);
+
+}
+
+.sidebar-logo-text{
+
+    font-size:1.25rem;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    color:var(--text-primary);
+
+}
+
+/* ==========================================
+   Scrollable Menu
+========================================== */
+
+.sidebar-menu-area{
+
+    flex:1;
+
+    min-height:0;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:8px 0;
+
+    scroll-behavior:smooth;
+
+    -webkit-overflow-scrolling:touch;
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+
+}
+
+.sidebar-menu-area::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/* Prevent nested scrolling */
+
+.ps-menu-root{
+
+    flex:1;
+
+}
+
+.ps-submenu-content{
+
+    overflow:hidden;
+
+}
+
+/* ==========================================
+   Logout
+========================================== */
+
+.sidebar-logout{
+
+    flex-shrink:0;
+
+    padding:5px;
+
+    border-top:1px solid var(--border-color);
+
+    background:var(--bg-card);
+
+}
+
+.sidebar-logout-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:12px 16px;
+
+    border-radius:12px;
+
+    transition:.2s;
+
+    background:transparent;
+
+    color:#ef4444;
+
+}
+
+.sidebar-logout-btn:hover{
+
+    background:var(--bg-secondary);
+
+}
+
+.sidebar-logout-icon{
+
+    font-size:20px;
+
+}
+/* ==========================================
+   Menu Buttons
+========================================== */
+
+.ps-menu-button {
+  color: var(--text-secondary) !important;
+  background: transparent !important;
+
+  margin: 3px 10px !important;
+
+  padding: 12px 16px !important;
+
+  border-radius: 12px !important;
+
+  border-left: 3px solid transparent !important;
+
+  transition: all .25s ease !important;
+
+  font-size: 15px !important;
+
+  font-weight: 500 !important;
+
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ps-menu-button:hover {
+
+  background: var(--bg-secondary) !important;
+
+  color: var(--text-primary) !important;
+
+  transform: translateX(2px);
+
+}
+
+.ps-menu-icon {
+
+  min-width: 22px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 18px;
+
+}
+
+.ps-menu-label {
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+/* ==========================================
+   Active Item
+========================================== */
+
+.ps-menu-button.ps-active {
+
+  background: var(--bg-secondary) !important;
+
+  color: var(--text-primary) !important;
+
+  border-left: 3px solid var(--accent) !important;
+
+  font-weight: 600 !important;
+
+}
+
+/* ==========================================
+   Submenu Container
+========================================== */
+
+.ps-submenu-content {
+
+  background: transparent !important;
+
+  margin-left: 10px;
+
+  border-left: 1px solid var(--border-color);
+
+  padding-left: 2px;
+
+}
+
+/* Level 1 */
+
+.ps-submenu-content .ps-menu-button {
+
+  padding-left: 36px !important;
+
+  font-size: 14px !important;
+
+}
+
+/* Level 2 */
+
+.ps-submenu-content
+.ps-submenu-content
+.ps-menu-button {
+
+  padding-left: 52px !important;
+
+}
+
+/* Active submenu */
+
+.ps-submenu-content
+.ps-menu-button.ps-active {
+
+  background: var(--bg-secondary) !important;
+
+  border-left: 3px solid var(--accent) !important;
+
+  color: var(--text-primary) !important;
+
+}
+
+/* ==========================================
+   Submenu Arrow
+========================================== */
+
+.ps-submenu-expand-icon {
+
+  color: var(--text-secondary);
+
+  transition: .25s;
+
+}
+
+.ps-submenu-root.ps-open
+.ps-submenu-expand-icon {
+
+  transform: rotate(90deg);
+
+}
+
+/* ==========================================
+   Focus
+========================================== */
+
+.ps-menu-button:focus {
+
+  outline: none !important;
+
+  box-shadow: none !important;
+
+}
+
+/* ==========================================
+   Collapsed Sidebar
+========================================== */
+
+.ps-collapsed .ps-menu-button {
+
+  justify-content: center !important;
+
+  padding: 12px 0 !important;
+
+}
+
+.ps-collapsed .ps-menu-label {
+
+  display: none !important;
+
+}
+
+.ps-collapsed .ps-submenu-content {
+
+  border-left: none !important;
+
+}
+
+.ps-collapsed .ps-menu-icon {
+
+  margin-right: 0 !important;
+
+}
+
+/* Tooltip spacing */
+
+.ps-collapsed .ps-menuitem-root {
+
+  margin: 4px 0;
+
+}
+
+/* ==========================================
+   Animation
+========================================== */
+
+.ps-submenu-content {
+
+  transition: all .25s ease;
+
+}
+
+.ps-menu-button {
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .2s ease;
+
+}
+/* ==========================================
+   Overlay
+========================================== */
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1040;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity .25s ease,
+              visibility .25s ease;
+}
+
+.sidebar-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================
+   Mobile Sidebar
+========================================== */
+
+@media (max-width: 991px) {
+
+  .sidebar-wrapper {
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+
+    width: 280px !important;
+
+    z-index: 1050;
+
+    transform: translateX(-100%);
+
+    transition: transform .3s ease;
+  }
+
+  .sidebar-wrapper.mobile.open {
+    transform: translateX(0);
+  }
+
+}
+
+/* ==========================================
+   Desktop
+========================================== */
+
+@media (min-width: 992px) {
+
+  .sidebar-wrapper {
+
+    transform: none !important;
+
+  }
+
+}
+
+/* ==========================================
+   Scrollbar Cleanup
+========================================== */
+
+.sidebar-menu-area,
+.ps-sidebar-container,
+.ps-menu-root,
+.ps-submenu-content {
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+
+}
+
+.sidebar-menu-area::-webkit-scrollbar,
+.ps-sidebar-container::-webkit-scrollbar,
+.ps-menu-root::-webkit-scrollbar,
+.ps-submenu-content::-webkit-scrollbar {
+
+  width: 0;
+
+  height: 0;
+
+  display: none;
+
+}
+
+/* ==========================================
+   Prevent Layout Jump
+========================================== */
+
+.ps-sidebar-root,
+.ps-sidebar-container,
+.ps-menu-root {
+
+  min-height: 0;
+
+}
+
+/* ==========================================
+   Better Icon Alignment
+========================================== */
+
+.ps-menu-icon svg,
+.ps-menu-icon i {
+
+  width: 20px;
+
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+/* ==========================================
+   Smooth Menu Expand
+========================================== */
+
+.ps-submenu-content {
+
+  animation: submenuFade .18s ease;
+
+}
+
+@keyframes submenuFade {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(-4px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+/* ==========================================
+   Logo Image
+========================================== */
+
+.sidebar-logo-avatar img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+}
+
+/* ==========================================
+   Selection
+========================================== */
+
+.ps-menu-button::selection {
+
+  background: transparent;
+
+}
+
+/* ==========================================
+   Final Cleanup
+========================================== */
+
+.sidebar-wrapper * {
+
+  box-sizing: border-box;
+
+}
+
+.sidebar-menu-area {
+
+  will-change: scroll-position;
+
+}
+
+.ps-menu-root {
+
+  padding-bottom: 12px;
+
+}
+
+.sidebar-logout {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+.sidebar-logo {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+/* ==========================================
+   Fix icon movement when sidebar collapsed
+========================================== */
+
+.ps-collapsed .ps-submenu-expand-icon {
+  display: none !important;
+}
+
+.ps-collapsed .ps-menu-button {
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 12px 0 !important;
+}
+
+.ps-menu-icon {
+  width: 24px !important;
+  min-width: 24px !important;
+  max-width: 24px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ps-sidebar-root {
+    transition: none !important;
+}
+
+.ps-sidebar-container {
+    transition: none !important;
+}
+
+.ps-menu-root {
+    transition: none !important;
+}
+
+.ps-menu-button {
+    transition:
+        background .2s,
+        color .2s !important;
+}
+
+/* ─── Search Bar (light) ─── */
+.sidebar-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 1rem;
+  background: #f1f5f9;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.sidebar-search:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+.sidebar-search-icon {
+  color: #64748b;
+  font-size: 1rem;
+}
+.sidebar-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #0f172a;
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+}
+.sidebar-search-input::placeholder {
+  color: #94a3b8;
+}
+.sidebar-search-clear {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.sidebar-search-clear:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* ─── No Results (light) ─── */
+.sidebar-no-results {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+.sidebar-no-results i {
+  font-size: 1.2rem;
+}
+
+/* ============================================================
+   DARK MODE SUPPORT (adds .dark class on body or wrapper)
+   ============================================================ */
+.dark .sidebar-search {
+  background: #1e293b;
+  border-color: #334155;
+}
+.dark .sidebar-search:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+.dark .sidebar-search-icon {
+  color: #94a3b8;
+}
+.dark .sidebar-search-input {
+  color: #f1f5f9;
+}
+.dark .sidebar-search-input::placeholder {
+  color: #64748b;
+}
+.dark .sidebar-search-clear {
+  color: #94a3b8;
+}
+.dark .sidebar-search-clear:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.dark .sidebar-no-results {
+  color: #94a3b8;
+}
+.dark .sidebar-no-results i {
+  color: #94a3b8;
+}
+/* ==========================================
+   End
+========================================== */
