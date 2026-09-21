@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useOrderNotifications } from "@/context/OrderNotificationContext";
@@ -11,8 +11,17 @@ export default function DeliveryHeadOrderRequestsPage() {
   const queryClient = useQueryClient();
   const { refreshNotificationsWithSound, stopRinging } = useOrderNotifications();
 
-  const storeId = localStorage.getItem('storeId') || sessionStorage.getItem('storeId');
-  console.log(`🏪 Delivery head store ID: ${storeId}`);
+  const [storeId, setStoreId] = useState(null);
+
+  useEffect(() => {
+    const id =
+      localStorage.getItem("storeId") ||
+      sessionStorage.getItem("storeId") ||
+      null;
+
+    setStoreId(id);
+    console.log(`🏪 Delivery head store ID: ${id}`);
+  }, []);
 
   const {
     data: orders = [],

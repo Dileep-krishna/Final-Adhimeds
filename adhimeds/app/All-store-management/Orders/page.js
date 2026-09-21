@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getAllOrders, updateItemStatus, deleteItem } from "../../services/orderAPI";
@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { useOrderNotifications } from "@/context/OrderNotificationContext";
 import "./orders.css";
 
-export default function OrdersPage() {
+function OrdersPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
@@ -364,5 +364,22 @@ export default function OrdersPage() {
         </div>
       </div>
     </div>
+  );
+}
+export default function OrdersPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container-fluid px-4">
+          <div className="text-center py-5">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <OrdersPageContent />
+    </Suspense>
   );
 }

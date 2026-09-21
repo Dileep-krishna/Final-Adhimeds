@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { getDeliveryBoysAPI } from "@/app/services/deliveryService";
@@ -17,16 +17,28 @@ export default function DeliveryBoysPage() {
   const [assignedModalOpen, setAssignedModalOpen] = useState(false);
   const [viewingBoy, setViewingBoy] = useState(null);
 
-  let storeId = getStoreId();
-  if (!storeId) {
-    storeId = localStorage.getItem('storeId') || sessionStorage.getItem('storeId');
-  }
-  const storeDistrict = 
-    localStorage.getItem('district') || 
-    sessionStorage.getItem('district') ||
-    localStorage.getItem('staffDistrict') || 
-    sessionStorage.getItem('staffDistrict') || 
-    null;
+  const [storeId, setStoreId] = useState(null);
+  const [storeDistrict, setStoreDistrict] = useState(null);
+
+  useEffect(() => {
+    let id = getStoreId();
+
+    if (!id) {
+      id =
+        localStorage.getItem("storeId") ||
+        sessionStorage.getItem("storeId");
+    }
+
+    const district =
+      localStorage.getItem("district") ||
+      sessionStorage.getItem("district") ||
+      localStorage.getItem("staffDistrict") ||
+      sessionStorage.getItem("staffDistrict") ||
+      null;
+
+    setStoreId(id);
+    setStoreDistrict(district);
+  }, []);
 
   const {
     data: boys = [],

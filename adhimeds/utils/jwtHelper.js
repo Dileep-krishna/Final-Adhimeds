@@ -5,14 +5,21 @@
  * @returns {string|null} The store's ObjectId or null if not found
  */
 export const getStoreIdFromToken = () => {
-  const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+  if (typeof window === "undefined") return null;
+
+  const token =
+    localStorage.getItem("token") ||
+    sessionStorage.getItem("token");
+
   if (!token) return null;
+
   try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    const payload = JSON.parse(atob(token.split(".")[1]));
+
     // The token contains 'id' (ObjectId) from your backend
     return payload.id || payload.storeId || null;
   } catch (e) {
-    console.error('Failed to parse token:', e);
+    console.error("Failed to parse token:", e);
     return null;
   }
 };
@@ -22,7 +29,13 @@ export const getStoreIdFromToken = () => {
  * @returns {string|null}
  */
 export const getShopIdFromStorage = () => {
-  return localStorage.getItem('shopid') || sessionStorage.getItem('shopid') || null;
+  if (typeof window === "undefined") return null;
+
+  return (
+    localStorage.getItem("shopid") ||
+    sessionStorage.getItem("shopid") ||
+    null
+  );
 };
 
 /**
@@ -30,7 +43,13 @@ export const getShopIdFromStorage = () => {
  * @returns {string|null}
  */
 export const getStoreNameFromStorage = () => {
-  return localStorage.getItem('storeName') || sessionStorage.getItem('storeName') || null;
+  if (typeof window === "undefined") return null;
+
+  return (
+    localStorage.getItem("storeName") ||
+    sessionStorage.getItem("storeName") ||
+    null
+  );
 };
 
 /**
@@ -38,7 +57,13 @@ export const getStoreNameFromStorage = () => {
  * @returns {string|null}
  */
 export const getDistrictFromStorage = () => {
-  return localStorage.getItem('district') || sessionStorage.getItem('district') || null;
+  if (typeof window === "undefined") return null;
+
+  return (
+    localStorage.getItem("district") ||
+    sessionStorage.getItem("district") ||
+    null
+  );
 };
 
 /**
@@ -46,7 +71,15 @@ export const getDistrictFromStorage = () => {
  * @returns {string|null}
  */
 export const getStoreId = () => {
+  if (typeof window === "undefined") return null;
+
   const fromToken = getStoreIdFromToken();
+
   if (fromToken) return fromToken;
-  return localStorage.getItem('storeId') || sessionStorage.getItem('storeId') || null;
+
+  return (
+    localStorage.getItem("storeId") ||
+    sessionStorage.getItem("storeId") ||
+    null
+  );
 };

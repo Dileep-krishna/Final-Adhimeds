@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { getOrdersByStore, updateItemStatus } from "@/app/services/orderAPI";
@@ -11,19 +11,31 @@ import "./assign-delivery-boys.css";
 export default function DeliveryHeadAllOrdersPage() {
   const queryClient = useQueryClient();
 
-  let storeId = getStoreId();
-  if (!storeId) {
-    storeId = localStorage.getItem('storeId') || sessionStorage.getItem('storeId');
-  }
-  console.log(`🏪 Assign page store ID: ${storeId}`);
+  const [storeId, setStoreId] = useState(null);
+  const [storeDistrict, setStoreDistrict] = useState(null);
 
-  const storeDistrict = 
-    localStorage.getItem('district') || 
-    sessionStorage.getItem('district') ||
-    localStorage.getItem('staffDistrict') || 
-    sessionStorage.getItem('staffDistrict') || 
-    null;
-  console.log(`📍 Store district: ${storeDistrict}`);
+  useEffect(() => {
+    let id = getStoreId();
+
+    if (!id) {
+      id =
+        localStorage.getItem("storeId") ||
+        sessionStorage.getItem("storeId");
+    }
+
+    const district =
+      localStorage.getItem("district") ||
+      sessionStorage.getItem("district") ||
+      localStorage.getItem("staffDistrict") ||
+      sessionStorage.getItem("staffDistrict") ||
+      null;
+
+    setStoreId(id);
+    setStoreDistrict(district);
+
+    console.log(`🏪 Assign page store ID: ${id}`);
+    console.log(`📍 Store district: ${district}`);
+  }, []);
 
   const { data: orders = [], isLoading: ordersLoading, refetch } = useQuery({
     queryKey: ["orders", storeId],

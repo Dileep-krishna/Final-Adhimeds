@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { Suspense, useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation'; // ✅ added useSearchParams
 import toast, { Toaster } from 'react-hot-toast';
@@ -14,7 +14,7 @@ import SERVERURL from '../../../../services/serverURL';
 
 export const dynamic = 'force-dynamic';
 
-export default function AllProductsPage() {
+function AllProductsContent() {
   const router = useRouter();
   const searchParams = useSearchParams(); // ✅ read query params
   const brandId = searchParams.get('brand'); // ✅ brand filter from URL
@@ -317,5 +317,23 @@ export default function AllProductsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AllProductsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container-fluid px-4">
+          <div className="text-center py-5">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <AllProductsContent />
+    </Suspense>
   );
 }

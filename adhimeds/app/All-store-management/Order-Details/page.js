@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import { getStoreId } from "@/utils/jwtHelper";
 import SERVERURL from "@/app/services/serverURL";
 import "./order-details.css";
 
-export default function OrderDetailsPage() {
+function OrderDetailsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const orderId = searchParams.get('id');
@@ -566,5 +566,18 @@ export default function OrderDetailsPage() {
         </div>
       )}
     </div>
+  );
+}
+export default function OrderDetailsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="order-page d-flex justify-content-center align-items-center">
+          <div className="spinner-border text-primary" />
+        </div>
+      }
+    >
+      <OrderDetailsContent />
+    </Suspense>
   );
 }
