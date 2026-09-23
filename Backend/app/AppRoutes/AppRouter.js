@@ -21,9 +21,15 @@ import {
   deleteAddress,
 } from "../AppControllers/AppAddressController.js";
 
+import {
+  deliveryLogin,
+} from "../AppControllers/AppDeliveryAuthController.js";
+import { storeLogin } from "../AppControllers/AppStoreAuthController.js";
 import protectAppUser from "../AppMiddleware/AppAuthMiddleware.js";
 
 import uploadPrescriptionFile from "../AppMiddleware/AppUploadMiddleware.js";
+
+
 
 const router = express.Router();
 
@@ -99,5 +105,11 @@ router.delete(
   protectAppUser,
   deleteAddress
 );
+
+router.post(
+  "/delivery/auth/login",
+  deliveryLogin
+);
+router.post("/store/auth/login", storeLogin);
 
 export default router;
