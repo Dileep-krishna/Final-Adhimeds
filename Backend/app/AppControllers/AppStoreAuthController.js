@@ -5,101 +5,160 @@ import jwt from "jsonwebtoken";
 
 export const storeLogin = async (req, res) => {
   try {
-    const { emailAddress, password } = req.body;
+    const { login, password } = req.body;
 
-    if (!emailAddress || !password) {
+    // -----------------------------------------
+    // 1. Validate input
+    // -----------------------------------------
+    if (!login || !password) {
       return res.status(400).json({
         success: false,
-        message: "Email and password are required",
+        message: "Phone/email and password are required",
       });
     }
 
-    const email = emailAddress.trim().toLowerCase();
+    const cleanLogin = login.trim();
+
+    // Check whether login is email or phone
+    const isEmail = cleanLogin.includes("@");
+
+    let store = null;
+    let storeType = "";
 
     // -----------------------------------------
-    // 1. Check StoreLogin collection
+    // 2. Check StoreLogin collection
     // -----------------------------------------
-    let store = await Store.findOne({
-      emailAddress: email,
-    }).select("+password");
-
-    let storeType = "StoreLogin";
-
-    // -----------------------------------------
-    // 2. If not found, check MedicalStore
-    // -----------------------------------------
-    if (!store) {
-      store = await MedicalStore.findOne({
-        emailAddress: email,
+    if (isEmail) {
+      store = await Store.findOne({
+        emailAddress: cleanLogin.toLowerCase(),
       }).select("+password");
+    } else {
+      let phone = cleanLogin.replace(/\D/g, "");
 
-      storeType = "MedicalStore";
+      // Convert +91XXXXXXXXXX / 91XXXXXXXXXX
+      // into 10 digit phone number
+      if (phone.length === 12 && phone.startsWith("91")) {
+        phone = phone.substring(2);
+      }
+
+      store = await Store.findOne({
+        contactNumber: phone,
+      }).select("+password");
     }
 
+    if (store) {
+      storeType = "StoreLogin";
+    }
+
+    // -----------------------------------------
+    // 3. If not found, check MedicalStore
+    // -----------------------------------------
+    if (!store) {
+      if (isEmail) {
+        store = await MedicalStore.findOne({
+          emailAddress: cleanLogin.toLowerCase(),
+        }).select("+password");
+      } else {
+        let phone = cleanLogin.replace(/\D/g, "");
+
+        if (phone.length === 12 && phone.startsWith("91")) {
+          phone = phone.substring(2);
+        }
+
+        store = await MedicalStore.findOne({
+          contactNumber: phone,
+        }).select("+password");
+      }
+
+      if (store) {
+        storeType = "MedicalStore";
+      }
+    }
+
+    // -----------------------------------------
+    // 4. Store not found
+    // -----------------------------------------
     if (!store) {
       return res.status(401).json({
         success: false,
-        message: "Invalid email or password",
+        message: "Invalid phone/email or password",
       });
     }
 
     // -----------------------------------------
-    // 3. Get district
+    // 5. Get district
     // -----------------------------------------
     let district = "";
 
     if (storeType === "MedicalStore") {
       district = store.district || "";
     } else {
-      const medicalStore = await MedicalStore.findOne({
-        emailAddress: email,
-      }).select("district");
+      // StoreLogin may not contain district.
+      // Fetch it from MedicalStore.
+      try {
+        const medicalStore = await MedicalStore.findOne({
+          emailAddress: store.emailAddress,
+        }).select("district");
 
-      district = medicalStore?.district || "";
+        district = medicalStore?.district || "";
+      } catch (error) {
+        console.warn(
+          "Could not fetch district:",
+          error.message
+        );
+
+        district = "";
+      }
     }
 
     // -----------------------------------------
-    // 4. Check password
+    // 6. Check password
     // -----------------------------------------
     let isMatch = false;
 
     if (
       store.password &&
-      (store.password.startsWith("$2a$") ||
+      (
+        store.password.startsWith("$2a$") ||
         store.password.startsWith("$2b$") ||
-        store.password.startsWith("$2y$"))
+        store.password.startsWith("$2y$")
+      )
     ) {
-      isMatch = await bcrypt.compare(password, store.password);
+      isMatch = await bcrypt.compare(
+        password,
+        store.password
+      );
     } else {
-      // Support old plain-text passwords if any exist
+      // Legacy plain-text password support
       isMatch = password === store.password;
     }
 
     if (!isMatch) {
       return res.status(401).json({
         success: false,
-        message: "Invalid email or password",
+        message: "Invalid phone/email or password",
       });
     }
 
     // -----------------------------------------
-    // 5. Check account status
+    // 7. Check store status
     // -----------------------------------------
     if (store.status !== "active") {
       return res.status(403).json({
         success: false,
-        message: "Your account is not active. Contact admin.",
+        message: "Your store account is not active. Contact admin.",
       });
     }
 
     // -----------------------------------------
-    // 6. Generate JWT
+    // 8. Generate JWT
     // -----------------------------------------
     const token = jwt.sign(
       {
         storeId: store._id,
         email: store.emailAddress,
         shopid: store.shopid || "",
+        district: district,
         role: "store",
         source: storeType,
       },
@@ -110,7 +169,7 @@ export const storeLogin = async (req, res) => {
     );
 
     // -----------------------------------------
-    // 7. Response
+    // 9. Return login response
     // -----------------------------------------
     return res.status(200).json({
       success: true,
@@ -123,24 +182,39 @@ export const storeLogin = async (req, res) => {
           id: store._id,
           storeName: store.storeName,
           emailAddress: store.emailAddress,
+          contactNumber: store.contactNumber || "",
           shopid: store.shopid || "",
+
           vendorCategory: store.vendorCategory || "",
+
           pincode: store.pincode || "",
           address: store.address || "",
           searchLocation: store.searchLocation || "",
+
           latitude: store.latitude ?? null,
           longitude: store.longitude ?? null,
-          drugLicenseNumber: store.drugLicenseNumber || "",
-          gstNumber: store.gstNumber || "",
-          contactNumber: store.contactNumber || "",
-          pharmacistName: store.pharmacistName || "",
-          thumbnailImages: store.thumbnailImages || [],
+
+          drugLicenseNumber:
+            store.drugLicenseNumber || "",
+
+          gstNumber:
+            store.gstNumber || "",
+
+          pharmacistName:
+            store.pharmacistName || "",
+
+          thumbnailImages:
+            store.thumbnailImages || [],
+
           status: store.status,
+
           district,
+
           source: storeType,
         },
       },
     });
+
   } catch (error) {
     console.error("Store login error:", error);
 
