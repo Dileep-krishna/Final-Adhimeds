@@ -28,8 +28,33 @@ import { storeLogin } from "../AppControllers/AppStoreAuthController.js";
 import protectAppUser from "../AppMiddleware/AppAuthMiddleware.js";
 
 import uploadPrescriptionFile from "../AppMiddleware/AppUploadMiddleware.js";
+import {
+  getAllPharmacists,
+  getPharmacistsByDistrict,
+  getPharmacistById,
+} from "../AppControllers/AppPharmacyController.js";
 
+import {
+  getCategories,
+  getSubcategories,
+} from "../AppControllers/AppCategoryController.js";
+import {
+  getAllAppProducts,
+  getProductsByCategory,
+  getProductsBySubcategory,
+  getAppProductById,
+    searchProducts,
+} from "../AppControllers/AppProductController.js";
 
+import {
+  getAllAppBrands,
+  getAppBrandById,
+} from "../AppControllers/AppBrandController.js";
+
+import {
+  addCustomerReviewVideo,
+  getCustomerReviewVideos,
+} from "../AppControllers/AppCustomerReviewVideoController.js";
 
 const router = express.Router();
 
@@ -111,5 +136,52 @@ router.post(
   deliveryLogin
 );
 router.post("/store/auth/login", storeLogin);
+// All pharmacists
+router.get("/pharmacists", getAllPharmacists);
 
+// Pharmacists by district
+router.get("/pharmacists/:district", getPharmacistsByDistrict);
+
+// Single pharmacist
+router.get("/pharmacist/:id", getPharmacistById);
+// All main categories
+router.get("/categories", getCategories);
+
+// Subcategories of selected category
+router.get(
+  "/categories/:categoryId/subcategories",
+  getSubcategories
+);router.get("/products", getAllAppProducts);
+
+router.get(
+  "/products/category/:categoryId",
+  getProductsByCategory
+);
+
+router.get(
+  "/products/subcategory/:subcategoryId",
+  getProductsBySubcategory
+);
+
+router.get(
+  "/products/:id",
+  getAppProductById
+);
+router.get(
+  "/products/search/:query",
+  searchProducts
+);
+
+router.get("/brands", getAllAppBrands);
+router.get("/brands/:id", getAppBrandById);
+
+router.post(
+  "/customer-review-videos",
+  addCustomerReviewVideo
+);
+
+router.get(
+  "/customer-review-videos",
+  getCustomerReviewVideos
+);
 export default router;
