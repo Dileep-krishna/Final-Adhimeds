@@ -24,10 +24,13 @@ import {
 import {
   deliveryLogin,
 } from "../AppControllers/AppDeliveryAuthController.js";
+
 import { storeLogin } from "../AppControllers/AppStoreAuthController.js";
+
 import protectAppUser from "../AppMiddleware/AppAuthMiddleware.js";
 
 import uploadPrescriptionFile from "../AppMiddleware/AppUploadMiddleware.js";
+
 import {
   getAllPharmacists,
   getPharmacistsByDistrict,
@@ -38,12 +41,13 @@ import {
   getCategories,
   getSubcategories,
 } from "../AppControllers/AppCategoryController.js";
+
 import {
   getAllAppProducts,
   getProductsByCategory,
   getProductsBySubcategory,
   getAppProductById,
-    searchProducts,
+  searchProducts,
 } from "../AppControllers/AppProductController.js";
 
 import {
@@ -59,23 +63,33 @@ import {
 import protectStore from "../AppMiddleware/AppStoreAuthMiddleware.js";
 
 import {
-  getStoreOrders,
+  getMedisoftShops,
+} from "../AppControllers/AppMedisoftController.js";
+
+import {
+  getMedisoftProducts,
+} from "../AppControllers/AppMedisoftProductController.js";
+
+import {
   getNewOrders,
   getOngoingOrders,
   getCompletedOrders,
   getCancelledOrders,
-  getStoreOrderById,
-  updateStoreOrderStatus,
-  updateStoreOrderItemStatus,
+  getStoreOrderDetails,
+  acceptStoreOrder,
+  rejectStoreOrder,
+  markOrderOngoing,
+  markOrderDelivered,
+  getStoreOrderHistory,
 } from "../AppControllers/AppStoreOrderController.js";
 
-import {
-  getMedisoftShops,
-} from "../AppControllers/AppMedisoftController.js";
-import {
-  getMedisoftProducts,
-} from "../AppControllers/AppMedisoftProductController.js";
+
 const router = express.Router();
+
+
+// =====================================================
+// TEST
+// =====================================================
 
 router.get("/test", (req, res) => {
   res.status(200).json({
@@ -84,9 +98,25 @@ router.get("/test", (req, res) => {
   });
 });
 
-router.post("/auth/send-otp", sendOTP);
 
-router.post("/auth/verify-otp", verifyOTP);
+// =====================================================
+// CUSTOMER AUTH
+// =====================================================
+
+router.post(
+  "/auth/send-otp",
+  sendOTP
+);
+
+router.post(
+  "/auth/verify-otp",
+  verifyOTP
+);
+
+
+// =====================================================
+// PRESCRIPTIONS
+// =====================================================
 
 router.post(
   "/prescriptions",
@@ -120,6 +150,11 @@ router.delete(
   deletePrescription
 );
 
+
+// =====================================================
+// ADDRESSES
+// =====================================================
+
 router.post(
   "/addresses",
   protectAppUser,
@@ -150,27 +185,75 @@ router.delete(
   deleteAddress
 );
 
+
+// =====================================================
+// DELIVERY BOY AUTH
+// =====================================================
+
 router.post(
   "/delivery/auth/login",
   deliveryLogin
 );
-router.post("/store/auth/login", storeLogin);
+
+
+// =====================================================
+// STORE AUTH
+// =====================================================
+
+router.post(
+  "/store/auth/login",
+  storeLogin
+);
+
+
+// =====================================================
+// PHARMACISTS
+// =====================================================
+
 // All pharmacists
-router.get("/pharmacists", getAllPharmacists);
+router.get(
+  "/pharmacists",
+  getAllPharmacists
+);
 
 // Pharmacists by district
-router.get("/pharmacists/:district", getPharmacistsByDistrict);
+router.get(
+  "/pharmacists/:district",
+  getPharmacistsByDistrict
+);
 
 // Single pharmacist
-router.get("/pharmacist/:id", getPharmacistById);
+router.get(
+  "/pharmacist/:id",
+  getPharmacistById
+);
+
+
+// =====================================================
+// CATEGORIES
+// =====================================================
+
 // All main categories
-router.get("/categories", getCategories);
+router.get(
+  "/categories",
+  getCategories
+);
 
 // Subcategories of selected category
 router.get(
   "/categories/:categoryId/subcategories",
   getSubcategories
-);router.get("/products", getAllAppProducts);
+);
+
+
+// =====================================================
+// PRODUCTS
+// =====================================================
+
+router.get(
+  "/products",
+  getAllAppProducts
+);
 
 router.get(
   "/products/category/:categoryId",
@@ -186,13 +269,31 @@ router.get(
   "/products/:id",
   getAppProductById
 );
+
 router.get(
   "/products/search/:query",
   searchProducts
 );
 
-router.get("/brands", getAllAppBrands);
-router.get("/brands/:id", getAppBrandById);
+
+// =====================================================
+// BRANDS
+// =====================================================
+
+router.get(
+  "/brands",
+  getAllAppBrands
+);
+
+router.get(
+  "/brands/:id",
+  getAppBrandById
+);
+
+
+// =====================================================
+// CUSTOMER REVIEW VIDEOS
+// =====================================================
 
 router.post(
   "/customer-review-videos",
@@ -203,61 +304,129 @@ router.get(
   "/customer-review-videos",
   getCustomerReviewVideos
 );
-// ===============================
-// VENDOR / STORE ORDER APIs
-// ===============================
+
+
+// =====================================================
+// MEDISOFT
+// =====================================================
 
 router.get(
-  "/store/orders",
-  protectStore,
-  getStoreOrders
+  "/medisoft/shops",
+  getMedisoftShops
 );
-
-router.get(
-  "/store/orders/new",
-  protectStore,
-  getNewOrders
-);
-
-router.get(
-  "/store/orders/ongoing",
-  protectStore,
-  getOngoingOrders
-);
-
-router.get(
-  "/store/orders/completed",
-  protectStore,
-  getCompletedOrders
-);
-
-router.get(
-  "/store/orders/cancelled",
-  protectStore,
-  getCancelledOrders
-);
-
-router.get(
-  "/store/orders/:orderId",
-  protectStore,
-  getStoreOrderById
-);
-
-router.patch(
-  "/store/orders/:orderId/status",
-  protectStore,
-  updateStoreOrderStatus
-);
-
-router.patch(
-  "/store/orders/:orderId/items/:itemId/status",
-  protectStore,
-  updateStoreOrderItemStatus
-);
-router.get("/medisoft/shops", getMedisoftShops);
 
 router.get(
   "/medisoft/products/:shopId",
   getMedisoftProducts
 );
+
+
+// =====================================================
+// STORE MOBILE ORDER APIs
+// =====================================================
+
+
+// -----------------------------------------------------
+// NEW ORDERS
+// -----------------------------------------------------
+
+router.get(
+  "/store/orders/new",
+  getNewOrders
+);
+
+
+// -----------------------------------------------------
+// ONGOING ORDERS
+// -----------------------------------------------------
+
+router.get(
+  "/store/orders/ongoing",
+  getOngoingOrders
+);
+
+
+// -----------------------------------------------------
+// COMPLETED ORDERS
+// -----------------------------------------------------
+
+router.get(
+  "/store/orders/completed",
+  getCompletedOrders
+);
+
+
+// -----------------------------------------------------
+// CANCELLED / REJECTED ORDERS
+// -----------------------------------------------------
+
+router.get(
+  "/store/orders/cancelled",
+  getCancelledOrders
+);
+
+
+// -----------------------------------------------------
+// ACCEPTED + REJECTED ORDER HISTORY
+// -----------------------------------------------------
+// IMPORTANT:
+// This must come BEFORE /:orderId
+// -----------------------------------------------------
+
+router.get(
+  "/store/orders/history",
+  getStoreOrderHistory
+);
+
+
+// -----------------------------------------------------
+// SINGLE ORDER DETAILS
+// -----------------------------------------------------
+
+router.get(
+  "/store/orders/:orderId",
+  getStoreOrderDetails
+);
+
+
+// -----------------------------------------------------
+// ACCEPT ORDER
+// -----------------------------------------------------
+
+router.post(
+  "/store/orders/:orderId/accept",
+  acceptStoreOrder
+);
+
+
+// -----------------------------------------------------
+// REJECT ORDER
+// -----------------------------------------------------
+
+router.post(
+  "/store/orders/:orderId/reject",
+  rejectStoreOrder
+);
+
+
+// -----------------------------------------------------
+// MOVE ORDER TO ONGOING
+// -----------------------------------------------------
+
+router.post(
+  "/store/orders/:orderId/ongoing",
+  markOrderOngoing
+);
+
+
+// -----------------------------------------------------
+// MARK ORDER DELIVERED
+// -----------------------------------------------------
+
+router.post(
+  "/store/orders/:orderId/delivered",
+  markOrderDelivered
+);
+
+
 export default router;

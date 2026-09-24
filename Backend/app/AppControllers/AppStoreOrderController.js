@@ -2,206 +2,283 @@ import mongoose from "mongoose";
 import Order from "../../model/Order.js";
 import MedicalStore from "../../model/MedicalstoreManagementModel.js";
 
-
-// ──────────────────────────────────────────────
-// GET STORE ORDERS
-// ──────────────────────────────────────────────
-export const getStoreOrders = async (req, res) => {
-  try {
-    const store = req.store;
-
-    if (!store) {
-      return res.status(401).json({
-        success: false,
-        message: "Store authentication required",
-      });
-    }
-
-    const orders = await Order.find({
-      storeId: store._id,
-    }).sort({ createdAt: -1 });
-
-    return res.status(200).json({
-      success: true,
-      message: "Store orders fetched successfully",
-      total: orders.length,
-      data: orders,
-    });
-  } catch (error) {
-    console.error("Get store orders error:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: error.message || "Failed to fetch store orders",
-    });
+/*
+|--------------------------------------------------------------------------
+| HELPER - FIND STORE BY SHOP ID
+|--------------------------------------------------------------------------
+*/
+const getStoreByShopId = async (shopid) => {
+  if (!shopid) {
+    return null;
   }
+
+  return await MedicalStore.findOne({
+    shopid: String(shopid),
+  });
 };
 
 
-// ──────────────────────────────────────────────
-// GET NEW ORDERS
-// pending + confirmed
-// ──────────────────────────────────────────────
+/*
+|--------------------------------------------------------------------------
+| GET NEW ORDERS
+|--------------------------------------------------------------------------
+| Website-created orders waiting for store action.
+|
+| pending / confirmed
+|
+| GET /api/app/store/orders/new?shopid=30
+|--------------------------------------------------------------------------
+*/
 export const getNewOrders = async (req, res) => {
   try {
-    const store = req.store;
+    const { shopid } = req.query;
+
+    if (!shopid) {
+      return res.status(400).json({
+        success: false,
+        message: "shopid is required",
+      });
+    }
+
+    const store = await getStoreByShopId(shopid);
 
     if (!store) {
-      return res.status(401).json({
+      return res.status(404).json({
         success: false,
-        message: "Store authentication required",
+        message: "Store not found",
       });
     }
 
     const orders = await Order.find({
       storeId: store._id,
-      status: {
-        $in: ["pending", "confirmed"],
-      },
-    }).sort({ createdAt: -1 });
+      status: "pending",
+    })
+      .sort({ createdAt: -1 })
+      .lean();
 
     return res.status(200).json({
       success: true,
       message: "New orders fetched successfully",
-      total: orders.length,
-      data: orders,
+      shopid: String(shopid),
+      storeId: store._id,
+      storeName: store.storeName,
+      count: orders.length,
+      orders,
     });
   } catch (error) {
-    console.error("Get new orders error:", error);
+    console.error("Get New Orders Error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to fetch new orders",
+      message: "Failed to fetch new orders",
+      error: error.message,
     });
   }
 };
 
-
-// ──────────────────────────────────────────────
-// GET ONGOING ORDERS
-// processing + assigned
-// ──────────────────────────────────────────────
+/*
+|--------------------------------------------------------------------------
+| GET ONGOING ORDERS
+|--------------------------------------------------------------------------
+| Store accepted/ongoing orders.
+|
+| processing / assigned
+|
+| GET /api/app/store/orders/ongoing?shopid=30
+|--------------------------------------------------------------------------
+*/
 export const getOngoingOrders = async (req, res) => {
   try {
-    const store = req.store;
+    const { shopid } = req.query;
+
+    console.log("📥 MOBILE - GET ONGOING ORDERS");
+    console.log("🏪 Shop ID:", shopid);
+
+    if (!shopid) {
+      return res.status(400).json({
+        success: false,
+        message: "shopid is required",
+      });
+    }
+
+    const store = await getStoreByShopId(shopid);
 
     if (!store) {
-      return res.status(401).json({
+      return res.status(404).json({
         success: false,
-        message: "Store authentication required",
+        message: `Store not found for shopid ${shopid}`,
       });
     }
 
     const orders = await Order.find({
       storeId: store._id,
       status: {
-        $in: ["processing", "assigned"],
+        $in: ["confirmed","processing", "assigned"],
       },
-    }).sort({ createdAt: -1 });
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    console.log(`✅ Ongoing orders found: ${orders.length}`);
 
     return res.status(200).json({
       success: true,
       message: "Ongoing orders fetched successfully",
-      total: orders.length,
+      count: orders.length,
+      shopid: String(shopid),
+      storeId: store._id,
+      storeName: store.storeName,
       data: orders,
     });
   } catch (error) {
-    console.error("Get ongoing orders error:", error);
+    console.error("❌ Get ongoing orders error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to fetch ongoing orders",
+      message: "Failed to fetch ongoing orders",
+      error: error.message,
     });
   }
 };
 
 
-// ──────────────────────────────────────────────
-// GET COMPLETED ORDERS
-// ──────────────────────────────────────────────
+/*
+|--------------------------------------------------------------------------
+| GET COMPLETED / DELIVERED ORDERS
+|--------------------------------------------------------------------------
+| Database status = completed
+|
+| GET /api/app/store/orders/completed?shopid=30
+|--------------------------------------------------------------------------
+*/
 export const getCompletedOrders = async (req, res) => {
   try {
-    const store = req.store;
+    const { shopid } = req.query;
+
+    console.log("📥 MOBILE - GET COMPLETED ORDERS");
+    console.log("🏪 Shop ID:", shopid);
+
+    if (!shopid) {
+      return res.status(400).json({
+        success: false,
+        message: "shopid is required",
+      });
+    }
+
+    const store = await getStoreByShopId(shopid);
 
     if (!store) {
-      return res.status(401).json({
+      return res.status(404).json({
         success: false,
-        message: "Store authentication required",
+        message: `Store not found for shopid ${shopid}`,
       });
     }
 
     const orders = await Order.find({
       storeId: store._id,
       status: "completed",
-    }).sort({ createdAt: -1 });
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    console.log(`✅ Completed orders found: ${orders.length}`);
 
     return res.status(200).json({
       success: true,
       message: "Completed orders fetched successfully",
-      total: orders.length,
+      count: orders.length,
+      shopid: String(shopid),
+      storeId: store._id,
+      storeName: store.storeName,
       data: orders,
     });
   } catch (error) {
-    console.error("Get completed orders error:", error);
+    console.error("❌ Get completed orders error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to fetch completed orders",
+      message: "Failed to fetch completed orders",
+      error: error.message,
     });
   }
 };
 
 
-// ──────────────────────────────────────────────
-// GET CANCELLED ORDERS
-// ──────────────────────────────────────────────
+/*
+|--------------------------------------------------------------------------
+| GET CANCELLED / REJECTED ORDERS
+|--------------------------------------------------------------------------
+|
+| GET /api/app/store/orders/cancelled?shopid=30
+|--------------------------------------------------------------------------
+*/
 export const getCancelledOrders = async (req, res) => {
   try {
-    const store = req.store;
+    const { shopid } = req.query;
+
+    console.log("📥 MOBILE - GET CANCELLED ORDERS");
+    console.log("🏪 Shop ID:", shopid);
+
+    if (!shopid) {
+      return res.status(400).json({
+        success: false,
+        message: "shopid is required",
+      });
+    }
+
+    const store = await getStoreByShopId(shopid);
 
     if (!store) {
-      return res.status(401).json({
+      return res.status(404).json({
         success: false,
-        message: "Store authentication required",
+        message: `Store not found for shopid ${shopid}`,
       });
     }
 
     const orders = await Order.find({
       storeId: store._id,
       status: "cancelled",
-    }).sort({ createdAt: -1 });
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    console.log(`✅ Cancelled orders found: ${orders.length}`);
 
     return res.status(200).json({
       success: true,
       message: "Cancelled orders fetched successfully",
-      total: orders.length,
+      count: orders.length,
+      shopid: String(shopid),
+      storeId: store._id,
+      storeName: store.storeName,
       data: orders,
     });
   } catch (error) {
-    console.error("Get cancelled orders error:", error);
+    console.error("❌ Get cancelled orders error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to fetch cancelled orders",
+      message: "Failed to fetch cancelled orders",
+      error: error.message,
     });
   }
 };
 
 
-// ──────────────────────────────────────────────
-// GET ORDER DETAIL
-// ──────────────────────────────────────────────
-export const getStoreOrderById = async (req, res) => {
+/*
+|--------------------------------------------------------------------------
+| GET SINGLE ORDER
+|--------------------------------------------------------------------------
+|
+| GET /api/app/store/orders/:orderId
+|--------------------------------------------------------------------------
+*/
+export const getStoreOrderDetails = async (req, res) => {
   try {
     const { orderId } = req.params;
-    const store = req.store;
 
-    if (!store) {
-      return res.status(401).json({
-        success: false,
-        message: "Store authentication required",
-      });
-    }
+    console.log("📥 MOBILE - GET ORDER DETAILS");
+    console.log("📦 Order ID:", orderId);
 
     if (!mongoose.Types.ObjectId.isValid(orderId)) {
       return res.status(400).json({
@@ -210,10 +287,7 @@ export const getStoreOrderById = async (req, res) => {
       });
     }
 
-    const order = await Order.findOne({
-      _id: orderId,
-      storeId: store._id,
-    });
+    const order = await Order.findById(orderId).lean();
 
     if (!order) {
       return res.status(404).json({
@@ -224,52 +298,36 @@ export const getStoreOrderById = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Order fetched successfully",
+      message: "Order details fetched successfully",
       data: order,
     });
   } catch (error) {
-    console.error("Get order detail error:", error);
+    console.error("❌ Get order details error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to fetch order",
+      message: "Failed to fetch order details",
+      error: error.message,
     });
   }
 };
 
 
-// ──────────────────────────────────────────────
-// UPDATE ORDER STATUS
-// ──────────────────────────────────────────────
-export const updateStoreOrderStatus = async (req, res) => {
+/*
+|--------------------------------------------------------------------------
+| ACCEPT ORDER
+|--------------------------------------------------------------------------
+| pending / confirmed → processing
+|
+| POST /api/app/store/orders/:orderId/accept
+|--------------------------------------------------------------------------
+*/
+export const acceptStoreOrder = async (req, res) => {
   try {
     const { orderId } = req.params;
-    const { status } = req.body;
 
-    const store = req.store;
-
-    if (!store) {
-      return res.status(401).json({
-        success: false,
-        message: "Store authentication required",
-      });
-    }
-
-    const validStatuses = [
-      "pending",
-      "confirmed",
-      "processing",
-      "completed",
-      "cancelled",
-      "assigned",
-    ];
-
-    if (!status || !validStatuses.includes(status)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid order status",
-      });
-    }
+    console.log("📥 MOBILE - ACCEPT ORDER");
+    console.log("📦 Order ID:", orderId);
 
     if (!mongoose.Types.ObjectId.isValid(orderId)) {
       return res.status(400).json({
@@ -278,10 +336,7 @@ export const updateStoreOrderStatus = async (req, res) => {
       });
     }
 
-    const order = await Order.findOne({
-      _id: orderId,
-      storeId: store._id,
-    });
+    const order = await Order.findById(orderId);
 
     if (!order) {
       return res.status(404).json({
@@ -290,58 +345,87 @@ export const updateStoreOrderStatus = async (req, res) => {
       });
     }
 
-    order.status = status;
+    console.log("📊 Current order status:", order.status);
+    console.log("🏪 Store ID:", order.storeId);
+    console.log("🏪 Shop ID:", order.shopid);
+
+    if (!["pending", "confirmed"].includes(order.status)) {
+      return res.status(400).json({
+        success: false,
+        message: `Order cannot be accepted from ${order.status} status`,
+      });
+    }
+
+    order.status = "processing";
+
+    order.items.forEach((item) => {
+      if (["pending", "confirmed"].includes(item.status)) {
+        item.status = "processing";
+      }
+    });
 
     await order.save();
 
+    console.log(`✅ Order ${orderId} ACCEPTED`);
+    console.log(`➡️ Main order status: ${order.status}`);
+
+    const io = req.app.get("io");
+
+    if (io) {
+      io.to(`store-${order.storeId}`).emit("order_status_updated", {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: "processing",
+        displayStatus: "ongoing",
+        order,
+      });
+
+      console.log(
+        `📡 Socket event sent to store-${order.storeId}`
+      );
+    }
+
     return res.status(200).json({
       success: true,
-      message: "Order status updated successfully",
-      data: order,
+      message: "Order accepted successfully",
+      data: {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: order.status,
+        displayStatus: "ongoing",
+        order,
+      },
     });
+
   } catch (error) {
-    console.error("Update order status error:", error);
+    console.error("❌ Accept order error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to update order status",
+      message: "Failed to accept order",
+      error: error.message,
     });
   }
 };
 
 
-// ──────────────────────────────────────────────
-// UPDATE ORDER ITEM STATUS
-// ──────────────────────────────────────────────
-export const updateStoreOrderItemStatus = async (req, res) => {
+/*
+|--------------------------------------------------------------------------
+| REJECT ORDER
+|--------------------------------------------------------------------------
+| pending / confirmed → cancelled
+|
+| POST /api/app/store/orders/:orderId/reject
+|--------------------------------------------------------------------------
+*/
+export const rejectStoreOrder = async (req, res) => {
   try {
-    const { orderId, itemId } = req.params;
-    const { status, assignedTo, billUrl } = req.body;
+    const { orderId } = req.params;
 
-    const store = req.store;
-
-    if (!store) {
-      return res.status(401).json({
-        success: false,
-        message: "Store authentication required",
-      });
-    }
-
-    const validStatuses = [
-      "pending",
-      "processing",
-      "completed",
-      "cancelled",
-      "assigned",
-      "confirmed",
-    ];
-
-    if (!status || !validStatuses.includes(status)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid item status",
-      });
-    }
+    console.log("📥 MOBILE - REJECT ORDER");
+    console.log("📦 Order ID:", orderId);
 
     if (!mongoose.Types.ObjectId.isValid(orderId)) {
       return res.status(400).json({
@@ -350,10 +434,7 @@ export const updateStoreOrderItemStatus = async (req, res) => {
       });
     }
 
-    const order = await Order.findOne({
-      _id: orderId,
-      storeId: store._id,
-    });
+    const order = await Order.findById(orderId);
 
     if (!order) {
       return res.status(404).json({
@@ -362,66 +443,373 @@ export const updateStoreOrderItemStatus = async (req, res) => {
       });
     }
 
-    const item = order.items.id(itemId);
-
-    if (!item) {
-      return res.status(404).json({
-        success: false,
-        message: "Order item not found",
-      });
-    }
-
-    // Bill required before processing
-    if (status === "processing" && !billUrl && !item.billUrl) {
+    if (!["pending", "confirmed"].includes(order.status)) {
       return res.status(400).json({
         success: false,
-        message: "Bill must be uploaded before accepting the order",
+        message: `Order cannot be rejected from ${order.status} status`,
       });
     }
 
-    item.status = status;
+    order.status = "cancelled";
 
-    if (assignedTo !== undefined) {
-      item.assignedTo = assignedTo;
-    }
-
-    if (billUrl !== undefined) {
-      item.billUrl = billUrl;
-    }
+    order.items.forEach((item) => {
+      if (["pending", "confirmed"].includes(item.status)) {
+        item.status = "cancelled";
+      }
+    });
 
     await order.save();
 
+    console.log(
+      `❌ Order ${orderId} REJECTED → cancelled`
+    );
+
+    const io = req.app.get("io");
+
+    if (io) {
+      io.to(`store-${order.storeId}`).emit("order_status_updated", {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: "cancelled",
+        displayStatus: "cancelled",
+        order,
+      });
+    }
+
     return res.status(200).json({
       success: true,
-      message: "Order item status updated successfully",
-      data: order,
+      message: "Order rejected successfully",
+      data: {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: order.status,
+        displayStatus: "cancelled",
+        order,
+      },
     });
+
   } catch (error) {
-    console.error("Update order item status error:", error);
+    console.error("❌ Reject order error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Failed to update order item",
+      message: "Failed to reject order",
+      error: error.message,
     });
   }
 };
-const getMedicalStoreId = async (req) => {
-  if (!req.store) {
-    return null;
+
+
+/*
+|--------------------------------------------------------------------------
+| MARK ORDER ONGOING
+|--------------------------------------------------------------------------
+| pending / confirmed → processing
+|
+| POST /api/app/store/orders/:orderId/ongoing
+|--------------------------------------------------------------------------
+*/
+export const markOrderOngoing = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    console.log("📥 MOBILE - MARK ORDER ONGOING");
+    console.log("📦 Order ID:", orderId);
+
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid order ID",
+      });
+    }
+
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: "Order not found",
+      });
+    }
+
+    if (!["pending", "confirmed"].includes(order.status)) {
+      return res.status(400).json({
+        success: false,
+        message: `Order cannot be moved to ongoing from ${order.status}`,
+      });
+    }
+
+    order.status = "processing";
+
+    order.items.forEach((item) => {
+      if (["pending", "confirmed"].includes(item.status)) {
+        item.status = "processing";
+      }
+    });
+
+    await order.save();
+
+    console.log(
+      `🔄 Order ${orderId} moved to ONGOING`
+    );
+
+    const io = req.app.get("io");
+
+    if (io) {
+      io.to(`store-${order.storeId}`).emit("order_status_updated", {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: "processing",
+        displayStatus: "ongoing",
+        order,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Order moved to ongoing successfully",
+      data: {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: order.status,
+        displayStatus: "ongoing",
+        order,
+      },
+    });
+
+  } catch (error) {
+    console.error("❌ Mark ongoing error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to update order",
+      error: error.message,
+    });
   }
+};
 
-  if (req.storeSource === "MedicalStore") {
-    return req.store._id;
+
+/*
+|--------------------------------------------------------------------------
+| MARK ORDER DELIVERED
+|--------------------------------------------------------------------------
+| processing / assigned → completed
+|
+| POST /api/app/store/orders/:orderId/delivered
+|--------------------------------------------------------------------------
+*/
+export const markOrderDelivered = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    console.log("📥 MOBILE - MARK ORDER DELIVERED");
+    console.log("📦 Order ID:", orderId);
+
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid order ID",
+      });
+    }
+
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: "Order not found",
+      });
+    }
+
+    if (!["processing", "assigned"].includes(order.status)) {
+      return res.status(400).json({
+        success: false,
+        message: `Order cannot be delivered from ${order.status} status`,
+      });
+    }
+
+    order.status = "completed";
+
+    order.items.forEach((item) => {
+      if (["processing", "assigned"].includes(item.status)) {
+        item.status = "completed";
+      }
+    });
+
+    await order.save();
+
+    console.log(
+      `🚚 Order ${orderId} DELIVERED → completed`
+    );
+
+    const io = req.app.get("io");
+
+    if (io) {
+      io.to(`store-${order.storeId}`).emit("order_status_updated", {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: "completed",
+        displayStatus: "delivered",
+        order,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Order delivered successfully",
+      data: {
+        orderId: order._id,
+        storeId: order.storeId,
+        shopid: order.shopid,
+        status: order.status,
+        displayStatus: "delivered",
+        order,
+      },
+    });
+
+  } catch (error) {
+    console.error("❌ Mark delivered error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to mark order as delivered",
+      error: error.message,
+    });
   }
+};
 
-  // If login came from Store collection, find its matching MedicalStore
-  const medicalStore = await MedicalStore.findOne({
-    $or: [
-      { emailAddress: req.store.emailAddress },
-      { shopid: req.store.shopid },
-      { contactNumber: req.store.contactNumber },
-    ],
-  });
 
-  return medicalStore?._id || null;
+/*
+|--------------------------------------------------------------------------
+| GET ACCEPTED + REJECTED ORDERS
+|--------------------------------------------------------------------------
+| IMPORTANT:
+|
+| cancelled = REJECTED
+|
+| ANY OTHER STATUS = ACCEPTED
+|
+| pending
+| confirmed
+| processing
+| assigned
+| completed
+| all go into acceptedOrders
+|
+| GET /api/app/store/orders/history?shopid=30
+|--------------------------------------------------------------------------
+*/
+export const getStoreOrderHistory = async (req, res) => {
+  try {
+    const { shopid } = req.query;
+
+    console.log("📥 MOBILE - GET ACCEPTED / REJECTED ORDERS");
+    console.log("🏪 Shop ID:", shopid);
+
+    if (!shopid) {
+      return res.status(400).json({
+        success: false,
+        message: "shopid is required",
+      });
+    }
+
+    const store = await getStoreByShopId(shopid);
+
+    if (!store) {
+      return res.status(404).json({
+        success: false,
+        message: `Store not found for shopid ${shopid}`,
+      });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | GET ALL ORDERS FOR THIS STORE
+    |--------------------------------------------------------------------------
+    */
+
+    const orders = await Order.find({
+      storeId: store._id,
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    /*
+    |--------------------------------------------------------------------------
+    | CLASSIFY ORDERS
+    |--------------------------------------------------------------------------
+    |
+    | cancelled → rejectedOrders
+    |
+    | EVERYTHING ELSE → acceptedOrders
+    |
+    */
+
+    const acceptedOrders = [];
+    const rejectedOrders = [];
+
+    orders.forEach((order) => {
+      if (order.status === "cancelled") {
+        rejectedOrders.push({
+          ...order,
+          orderStatus: "rejected",
+        });
+      } else {
+        acceptedOrders.push({
+          ...order,
+          orderStatus: "accepted",
+        });
+      }
+    });
+
+    console.log(
+      `✅ Accepted orders: ${acceptedOrders.length}`
+    );
+
+    console.log(
+      `❌ Rejected orders: ${rejectedOrders.length}`
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSE
+    |--------------------------------------------------------------------------
+    */
+
+    return res.status(200).json({
+      success: true,
+      message: "Accepted and rejected orders fetched successfully",
+
+      shopid: String(shopid),
+
+      storeId: store._id,
+
+      storeName: store.storeName,
+
+      acceptedCount: acceptedOrders.length,
+
+      rejectedCount: rejectedOrders.length,
+
+      acceptedOrders,
+
+      rejectedOrders,
+    });
+
+  } catch (error) {
+    console.error(
+      "❌ Get accepted/rejected orders error:",
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch accepted and rejected orders",
+      error: error.message,
+    });
+  }
 };
