@@ -21,8 +21,8 @@ export async function POST(req) {
   }
 
   // 3. Check credentials from env
-  const username = process.env.MEDISOFT_API_USERNAME;
-  const password = process.env.MEDISOFT_API_PASSWORD;
+  const username = process.env.MEDISOFT_USERNAME;
+  const password = process.env.MEDISOFT_PASSWORD;
   if (!username || !password) {
     return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
   }

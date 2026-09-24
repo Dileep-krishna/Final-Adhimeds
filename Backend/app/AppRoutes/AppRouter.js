@@ -56,6 +56,25 @@ import {
   getCustomerReviewVideos,
 } from "../AppControllers/AppCustomerReviewVideoController.js";
 
+import protectStore from "../AppMiddleware/AppStoreAuthMiddleware.js";
+
+import {
+  getStoreOrders,
+  getNewOrders,
+  getOngoingOrders,
+  getCompletedOrders,
+  getCancelledOrders,
+  getStoreOrderById,
+  updateStoreOrderStatus,
+  updateStoreOrderItemStatus,
+} from "../AppControllers/AppStoreOrderController.js";
+
+import {
+  getMedisoftShops,
+} from "../AppControllers/AppMedisoftController.js";
+import {
+  getMedisoftProducts,
+} from "../AppControllers/AppMedisoftProductController.js";
 const router = express.Router();
 
 router.get("/test", (req, res) => {
@@ -183,5 +202,62 @@ router.post(
 router.get(
   "/customer-review-videos",
   getCustomerReviewVideos
+);
+// ===============================
+// VENDOR / STORE ORDER APIs
+// ===============================
+
+router.get(
+  "/store/orders",
+  protectStore,
+  getStoreOrders
+);
+
+router.get(
+  "/store/orders/new",
+  protectStore,
+  getNewOrders
+);
+
+router.get(
+  "/store/orders/ongoing",
+  protectStore,
+  getOngoingOrders
+);
+
+router.get(
+  "/store/orders/completed",
+  protectStore,
+  getCompletedOrders
+);
+
+router.get(
+  "/store/orders/cancelled",
+  protectStore,
+  getCancelledOrders
+);
+
+router.get(
+  "/store/orders/:orderId",
+  protectStore,
+  getStoreOrderById
+);
+
+router.patch(
+  "/store/orders/:orderId/status",
+  protectStore,
+  updateStoreOrderStatus
+);
+
+router.patch(
+  "/store/orders/:orderId/items/:itemId/status",
+  protectStore,
+  updateStoreOrderItemStatus
+);
+router.get("/medisoft/shops", getMedisoftShops);
+
+router.get(
+  "/medisoft/products/:shopId",
+  getMedisoftProducts
 );
 export default router;

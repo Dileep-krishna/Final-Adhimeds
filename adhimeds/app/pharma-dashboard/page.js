@@ -5,7 +5,7 @@ import "./pharma-dashboard.css";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
 import { useCart } from "@/context/CartContext"; // ✅ only addition
-
+import SERVERURL from "../services/serverURL";
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
@@ -26,23 +26,28 @@ export default function Dashboard() {
   }, []);
 
   // Fetch stores from real Medisoft API (GET)
-  useEffect(() => {
-    async function fetchStores() {
-      try {
-        const res = await fetch("/api/medisoft/shops");
-        if (!res.ok) throw new Error(await res.text());
-        const data = await res.json();
-        const shopsArray = Array.isArray(data) ? data : data?.body || [];
-        setStores(shopsArray);
-      } catch (err) {
-        console.error(err);
-        setStores([]);
-      } finally {
-        setLoadingShops(false);
-      }
+// Fetch stores from backend Medisoft API
+useEffect(() => {
+  async function fetchStores() {
+    try {
+      const res = await fetch(`${SERVERURL}/api/app/medisoft/shops`);
+
+      if (!res.ok) throw new Error(await res.text());
+
+      const data = await res.json();
+      const shopsArray = Array.isArray(data) ? data : data?.body || [];
+
+      setStores(shopsArray);
+    } catch (err) {
+      console.error(err);
+      setStores([]);
+    } finally {
+      setLoadingShops(false);
     }
-    fetchStores();
-  }, []);
+  }
+
+  fetchStores();
+}, []);
 
   // Dummy state to keep JSX intact (always empty)
   const stockData = {};
