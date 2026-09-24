@@ -60,8 +60,6 @@ import {
   getCustomerReviewVideos,
 } from "../AppControllers/AppCustomerReviewVideoController.js";
 
-import protectStore from "../AppMiddleware/AppStoreAuthMiddleware.js";
-
 import {
   getMedisoftShops,
 } from "../AppControllers/AppMedisoftController.js";
@@ -323,11 +321,13 @@ router.get(
 
 // =====================================================
 // STORE MOBILE ORDER APIs
+// NO AUTHENTICATION REQUIRED
 // =====================================================
 
 
 // -----------------------------------------------------
 // NEW ORDERS
+// Only pending orders
 // -----------------------------------------------------
 
 router.get(
@@ -368,9 +368,7 @@ router.get(
 
 // -----------------------------------------------------
 // ACCEPTED + REJECTED ORDER HISTORY
-// -----------------------------------------------------
-// IMPORTANT:
-// This must come BEFORE /:orderId
+// IMPORTANT: MUST COME BEFORE /:orderId
 // -----------------------------------------------------
 
 router.get(
