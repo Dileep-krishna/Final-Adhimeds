@@ -80,8 +80,11 @@ import {
   markOrderDelivered,
   getStoreOrderHistory,
 } from "../AppControllers/AppStoreOrderController.js";
-
-
+import {
+  getDeliveryHeadNewOrders,
+  getDeliveryHeadOngoingOrders,
+  getDeliveryHeadRejectedOrders,
+} from "../AppControllers/AppDeliveryHeadOrderController.js";
 const router = express.Router();
 
 
@@ -425,6 +428,30 @@ router.post(
   "/store/orders/:orderId/delivered",
   markOrderDelivered
 );
+// =====================================================
+// DELIVERY HEAD ORDER APIs
+// READ ONLY
+// Website handles Accept / Reject
+// =====================================================
 
+// New orders
+router.get(
+  "/delivery-head/orders/new",
+  getDeliveryHeadNewOrders
+);
+
+// Ongoing orders
+// processing = accepted + ongoing
+router.get(
+  "/delivery-head/orders/ongoing",
+  getDeliveryHeadOngoingOrders
+);
+
+// Rejected orders
+// cancelled = rejected
+router.get(
+  "/delivery-head/orders/rejected",
+  getDeliveryHeadRejectedOrders
+);
 
 export default router;
