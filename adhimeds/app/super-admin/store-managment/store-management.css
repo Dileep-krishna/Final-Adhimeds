@@ -881,3 +881,48 @@
   max-height: 240px;
   overflow-y: auto;
 }
+/* =========================================
+   FEATURED STORE TOGGLE
+   ========================================= */
+
+.featured-toggle {
+  position: relative;
+  width: 46px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  vertical-align: middle;
+}
+
+.featured-toggle:hover {
+  transform: scale(1.05);
+}
+
+.featured-toggle:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.featured-toggle-circle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+}
+
+.featured-toggle.active {
+  background: #16a34a;
+}
+
+.featured-toggle.active .featured-toggle-circle {
+  transform: translateX(22px);
+}

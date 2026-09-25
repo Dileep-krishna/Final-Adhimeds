@@ -88,6 +88,11 @@ import {
 import {
   getOrderInvoice,
 } from "../AppControllers/AppInvoiceController.js";
+
+import {
+  getNearbyStores,
+  getFeaturedStores,
+} from "../AppControllers/AppStoreController.js";
 const router = express.Router();
 
 
@@ -470,5 +475,8 @@ router.get(
   "/orders/:orderId/invoice",
   getOrderInvoice
 );
+
+router.get("/stores/nearby", getNearbyStores);
+router.get("/stores/featured", getFeaturedStores);
 
 export default router;

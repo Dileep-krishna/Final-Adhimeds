@@ -35,6 +35,10 @@ const medicalStoreSchema = new mongoose.Schema(
       enum: ['active', 'inactive', 'pending'],
       default: 'pending',
     },
+    isFeatured: {
+  type: Boolean,
+  default: false,
+},
     vendorCategory: {
       type: String,
       enum: ['medical store', 'Lab test', 'Ayurveda store'],

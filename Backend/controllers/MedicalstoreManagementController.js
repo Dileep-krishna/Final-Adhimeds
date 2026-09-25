@@ -266,3 +266,55 @@ export const getStoreByEmail = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server error' });
   }
 };
+// ---------------------------
+// 8. TOGGLE FEATURED STORE
+// ---------------------------
+export const toggleFeaturedStore = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isFeatured } = req.body;
+
+    if (typeof isFeatured !== 'boolean') {
+      return res.status(400).json({
+        success: false,
+        message: 'isFeatured must be true or false',
+      });
+    }
+
+    const updatedStore = await MedicalStore.findByIdAndUpdate(
+      id,
+      { isFeatured },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedStore) {
+      return res.status(404).json({
+        success: false,
+        message: 'Medical store not found',
+      });
+    }
+
+    const { password, ...storeWithoutPassword } =
+      updatedStore.toObject();
+
+    return res.status(200).json({
+      success: true,
+      message: isFeatured
+        ? 'Store marked as featured'
+        : 'Store removed from featured stores',
+      data: storeWithoutPassword,
+    });
+
+  } catch (error) {
+    console.error('Error toggling featured store:', error);
+
+    return res.status(500).json({
+      success: false,
+      message: 'Server error',
+      error: error.message,
+    });
+  }
+};

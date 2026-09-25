@@ -22,7 +22,7 @@ import {
   downloadTemplate,
   bulkImportCategories,
 } from "./controllers/categoryManagmentController.js";
-import { addMedicalStore, deleteMedicalStore, getAllMedicalStores, getMedicalStoreById, getShopsForOrder, getStoreByEmail, updateMedicalStore } from "./controllers/MedicalstoreManagementController.js";
+import { addMedicalStore, deleteMedicalStore, getAllMedicalStores, getMedicalStoreById, getShopsForOrder, getStoreByEmail, updateMedicalStore,toggleFeaturedStore } from "./controllers/MedicalstoreManagementController.js";
 import { addStaff, deleteStaff, getAllDistricts, getAllStaff, getStaffById, updateStaff } from "./controllers/staffmanagementController.js";
 import { createRole, deleteRole, getAllRoles, getRoleById, updateRole, updateRolePermissions } from "./controllers/roleController.js";
 import { 
@@ -136,24 +136,34 @@ router.put(
 router.delete("/category/:id", deleteCategory);
 
 // ================= STORE MANAGEMENT =================
+
 router.post(
   '/store',
   multerConfig.array('thumbnailImages', 10),
   addMedicalStore
 );
+
 router.get('/store', getAllMedicalStores);
-// ✅ Specific routes must come before generic :id
-router.get('/store/by-email', getStoreByEmail);        // email lookup
-router.get('/store/products', getAllStoreProducts);   // list store products
+
+// Featured Store Toggle
+router.patch(
+  '/store/:id/featured',
+  toggleFeaturedStore
+);
+
+// Specific routes must come before generic :id
+router.get('/store/by-email', getStoreByEmail);
+router.get('/store/products', getAllStoreProducts);
 router.get('/store/:id', getMedicalStoreById);
+
 router.put(
   '/store/:id',
   multerConfig.array('thumbnailImages', 10),
   updateMedicalStore
 );
-router.get('/medisoft/shops', getShopsForOrder); 
-router.delete('/store/:id', deleteMedicalStore);
 
+router.get('/medisoft/shops', getShopsForOrder);
+router.delete('/store/:id', deleteMedicalStore);
 // ===============Store Product Access==============
 router.put('/store/product-access/:productId/:storeId', updateProductAccess);
 router.get('/store/products/:storeId', getStoreProducts);
