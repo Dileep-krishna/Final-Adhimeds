@@ -85,6 +85,9 @@ import {
   getDeliveryHeadOngoingOrders,
   getDeliveryHeadRejectedOrders,
 } from "../AppControllers/AppDeliveryHeadOrderController.js";
+import {
+  getOrderInvoice,
+} from "../AppControllers/AppInvoiceController.js";
 const router = express.Router();
 
 
@@ -452,6 +455,20 @@ router.get(
 router.get(
   "/delivery-head/orders/rejected",
   getDeliveryHeadRejectedOrders
+);
+
+// =====================================================
+// ORDER INVOICE
+// =====================================================
+
+// =====================================================
+// ORDER INVOICE
+// =====================================================
+
+// Get invoice for an order
+router.get(
+  "/orders/:orderId/invoice",
+  getOrderInvoice
 );
 
 export default router;
