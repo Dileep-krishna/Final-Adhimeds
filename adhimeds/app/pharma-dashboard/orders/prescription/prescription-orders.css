@@ -1,0 +1,1052 @@
+/* =========================================================
+   PRESCRIPTION ORDERS PAGE
+   ========================================================= */
+
+.prescription-orders-page {
+  width: 100%;
+  min-height: calc(100vh - 110px);
+
+  padding: 28px 30px 40px;
+
+  background: #f7f8fc;
+
+  color: #1f2937;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.prescription-orders-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.orders-title-section {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.orders-title-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eeeaff;
+
+  font-size: 22px;
+}
+
+.orders-title-section h1 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  color: #172033;
+}
+
+.orders-title-section p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: #7a8494;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-orders-btn {
+  height: 38px;
+
+  padding: 0 17px;
+
+  border: 1px solid #e1e5eb;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #475467;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.back-orders-btn:hover {
+  background: #f3f0ff;
+
+  color: #5a3fff;
+
+  border-color: #dcd5ff;
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
+
+.order-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+   ========================================================= */
+
+.summary-card {
+  min-height: 86px;
+
+  padding: 15px 17px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  background: #ffffff;
+
+  border: 1px solid #e7eaf0;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 10px rgba(20, 30, 60, 0.03);
+}
+
+.summary-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  font-size: 19px;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.summary-content span {
+  font-size: 11px;
+
+  color: #8b95a5;
+
+  font-weight: 500;
+}
+
+.summary-content strong {
+  font-size: 20px;
+
+  line-height: 1;
+
+  color: #263142;
+}
+
+
+/* TOTAL */
+
+.summary-card.total .summary-icon {
+  background: #eeeaff;
+  color: #5a3fff;
+}
+
+
+/* PENDING */
+
+.summary-card.pending .summary-icon {
+  background: #fff6dc;
+  color: #c58b00;
+}
+
+
+/* PAID */
+
+.summary-card.paid .summary-icon {
+  background: #e8f9ef;
+  color: #13a153;
+}
+
+
+/* UNPAID */
+
+.summary-card.unpaid .summary-icon {
+  background: #fff0f3;
+  color: #ef3f67;
+}
+
+
+/* AMOUNT */
+
+.summary-card.amount .summary-icon {
+  background: #eaf6ff;
+  color: #078fd1;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.prescription-orders-card {
+  background: #ffffff;
+
+  border: 1px solid #e6e9ef;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 3px 15px rgba(20, 30, 60, 0.04);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.orders-card-top {
+  min-height: 70px;
+
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.orders-card-top h2 {
+  margin: 0;
+
+  font-size: 17px;
+
+  font-weight: 650;
+
+  color: #172033;
+}
+
+.orders-card-top span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  color: #98a2b3;
+}
+
+
+/* =========================================================
+   FILTER BAR
+   ========================================================= */
+
+.orders-filter-bar {
+  padding: 15px 24px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  background: #fbfcfe;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.order-search {
+  position: relative;
+
+  flex: 1;
+
+  max-width: 420px;
+}
+
+.order-search > span {
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #98a2b3;
+
+  font-size: 14px;
+
+  pointer-events: none;
+}
+
+.order-search input {
+  width: 100%;
+  height: 40px;
+
+  padding:
+    0 38px 0 39px;
+
+  border: 1px solid #dfe4eb;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  outline: none;
+
+  color: #344054;
+
+  font-size: 13px;
+
+  transition: all 0.2s ease;
+}
+
+.order-search input:focus {
+  border-color: #8a73ff;
+
+  box-shadow:
+    0 0 0 3px rgba(90, 63, 255, 0.07);
+}
+
+.order-search input::placeholder {
+  color: #98a2b3;
+}
+
+.search-clear {
+  position: absolute;
+
+  right: 10px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #edf0f4;
+
+  color: #667085;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SELECTS
+   ========================================================= */
+
+.orders-filter-bar select {
+  width: 220px;
+  height: 40px;
+
+  padding: 0 13px;
+
+  border: 1px solid #dfe4eb;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #667085;
+
+  font-size: 13px;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.orders-filter-bar select:focus {
+  border-color: #8a73ff;
+}
+
+
+/* =========================================================
+   CLEAR FILTER
+   ========================================================= */
+
+.clear-orders-filter {
+  height: 40px;
+
+  padding: 0 15px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #fff0f2;
+
+  color: #e11d48;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.clear-orders-filter:hover {
+  background: #ffe3e8;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.orders-table-container {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.prescription-orders-table {
+  width: 100%;
+
+  min-width: 1100px;
+
+  border-collapse: collapse;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.prescription-orders-table thead th {
+  height: 55px;
+
+  padding: 0 15px;
+
+  border-bottom: 1px solid #e7ebf0;
+
+  color: #344054;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  white-space: nowrap;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.prescription-orders-table tbody td {
+  height: 76px;
+
+  padding: 12px 15px;
+
+  border-bottom: 1px solid #edf0f4;
+
+  color: #344054;
+
+  font-size: 13px;
+
+  vertical-align: middle;
+}
+
+.prescription-orders-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.prescription-orders-table tbody tr:hover {
+  background: #fafbff;
+}
+
+.prescription-orders-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS
+   ========================================================= */
+
+.number-column {
+  width: 55px;
+}
+
+.options-column {
+  width: 110px;
+  text-align: center !important;
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.number-cell {
+  color: #667085 !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   ORDER CODE
+   ========================================================= */
+
+.order-code {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #0798ed;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.order-code:hover {
+  text-decoration: underline;
+
+  color: #0077c8;
+}
+
+
+/* =========================================================
+   PRODUCT COUNT
+   ========================================================= */
+
+.products-count {
+  min-width: 30px;
+
+  height: 27px;
+
+  padding: 0 9px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background: #f1f3f6;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CUSTOMER
+   ========================================================= */
+
+.customer-cell {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 150px;
+}
+
+.customer-avatar {
+  width: 33px;
+  height: 33px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eeeaff;
+
+  color: #5a3fff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.customer-cell span {
+  color: #344054;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   AMOUNT
+   ========================================================= */
+
+.order-amount {
+  color: #344054;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DELIVERY STATUS
+   ========================================================= */
+
+.delivery-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #f59e0b;
+}
+
+.delivery-status.processing .status-dot {
+  background: #0d9fe8;
+}
+
+.delivery-status.delivered .status-dot {
+  background: #16a34a;
+}
+
+.delivery-status.cancelled .status-dot {
+  background: #ef4444;
+}
+
+
+/* =========================================================
+   PAYMENT STATUS
+   ========================================================= */
+
+.payment-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border-radius: 5px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.payment-status.unpaid {
+  background: #ffedf1;
+
+  color: #ef3d67;
+}
+
+.payment-status.paid {
+  background: #e8f8ee;
+
+  color: #159447;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.order-date {
+  white-space: nowrap;
+}
+
+.order-date strong {
+  color: #475467;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   VIEW BUTTON
+   ========================================================= */
+
+.view-order-btn {
+  width: 80px;
+  height: 34px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #f2edff;
+
+  color: #7450df;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.view-order-btn:hover {
+  background: #7450df;
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(116, 80, 223, 0.18);
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.orders-empty {
+  padding: 80px 20px !important;
+
+  text-align: center;
+}
+
+.empty-orders-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f1efff;
+
+  font-size: 25px;
+}
+
+.orders-empty h3 {
+  margin: 0 0 6px;
+
+  color: #344054;
+
+  font-size: 16px;
+}
+
+.orders-empty p {
+  margin: 0;
+
+  color: #98a2b3;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.orders-footer {
+  min-height: 64px;
+
+  padding: 0 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-top: 1px solid #edf0f4;
+
+  color: #98a2b3;
+
+  font-size: 12px;
+}
+
+.orders-showing strong {
+  color: #475467;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.orders-pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+.orders-pagination button {
+  width: 31px;
+  height: 31px;
+
+  border: 1px solid #e1e5eb;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.orders-pagination button:hover:not(:disabled) {
+  background: #f4f1ff;
+
+  color: #5a3fff;
+
+  border-color: #d9d1ff;
+}
+
+.orders-pagination button.active {
+  background: #5a3fff;
+
+  border-color: #5a3fff;
+
+  color: #ffffff;
+}
+
+.orders-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.orders-table-container::-webkit-scrollbar {
+  height: 7px;
+}
+
+.orders-table-container::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+.orders-table-container::-webkit-scrollbar-thumb {
+  background: #c7ccd4;
+
+  border-radius: 10px;
+}
+
+.orders-table-container::-webkit-scrollbar-thumb:hover {
+  background: #aeb4bd;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1200
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .prescription-orders-page {
+    padding: 24px 20px 35px;
+  }
+
+  .order-summary-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .orders-card-top {
+    padding: 0 20px;
+  }
+
+  .orders-filter-bar {
+    padding: 14px 20px;
+  }
+
+  .orders-footer {
+    padding: 0 20px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 900
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .order-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .orders-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .order-search {
+    width: 100%;
+
+    max-width: none;
+
+    flex-basis: 100%;
+  }
+
+  .orders-filter-bar select {
+    flex: 1;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .prescription-orders-page {
+    padding: 18px 12px 30px;
+  }
+
+  .prescription-orders-header {
+    align-items: flex-start;
+  }
+
+  .orders-title-section h1 {
+    font-size: 20px;
+  }
+
+  .orders-title-section p {
+    font-size: 12px;
+  }
+
+  .back-orders-btn {
+    display: none;
+  }
+
+  .order-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .orders-filter-bar select {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .clear-orders-filter {
+    width: 100%;
+  }
+
+  .orders-card-top {
+    padding: 15px 16px;
+  }
+
+  .orders-footer {
+    padding: 12px 16px;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    align-items: flex-start;
+  }
+
+  .orders-pagination {
+    width: 100%;
+
+    justify-content: center;
+  }
+}

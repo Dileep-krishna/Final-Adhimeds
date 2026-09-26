@@ -222,3 +222,25 @@ export const deletePrescription = async (req, res) => {
     });
   }
 };
+
+export const getAllPrescriptions = async (req, res) => {
+  try {
+    const prescriptions = await Prescription.find({})
+      .sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      success: true,
+      message: "All prescriptions fetched successfully",
+      count: prescriptions.length,
+      data: prescriptions,
+    });
+  } catch (error) {
+    console.error("Get All Prescriptions Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch all prescriptions",
+      error: error.message,
+    });
+  }
+};

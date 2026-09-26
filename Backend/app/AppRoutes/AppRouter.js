@@ -11,6 +11,7 @@ import {
   getPrescriptionById,
   deletePrescription,
   updatePrescription,
+  getAllPrescriptions,
 } from "../AppControllers/AppPrescriptionController.js";
 
 import {
@@ -93,6 +94,12 @@ import {
   getNearbyStores,
   getFeaturedStores,
 } from "../AppControllers/AppStoreController.js";
+
+import {
+  createNormalOrder,
+  getNormalOrders,
+  getNormalOrderById,
+} from "../AppControllers/AppOrderController.js";
 const router = express.Router();
 
 
@@ -157,6 +164,11 @@ router.delete(
   "/prescriptions/:id",
   protectAppUser,
   deletePrescription
+);
+
+router.get(
+  "/admin/prescriptions",
+  getAllPrescriptions
 );
 
 
@@ -479,4 +491,18 @@ router.get(
 router.get("/stores/nearby", getNearbyStores);
 router.get("/stores/featured", getFeaturedStores);
 
+router.post(
+  "/orders/normal-create",
+  createNormalOrder
+);
+
+router.get(
+  "/orders/normal",
+  getNormalOrders
+);
+
+router.get(
+  "/orders/normal/:id",
+  getNormalOrderById
+);
 export default router;

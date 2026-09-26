@@ -1,4 +1,7 @@
-/* ================= TOPBAR ================= */
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
 .topbar {
   background: linear-gradient(90deg, #5a3fff, #7a4dff);
   color: white;
@@ -16,11 +19,16 @@
   font-size: 22px;
   white-space: nowrap;
 }
+
 .logo span {
   color: #00d4ff;
 }
 
-/* YOUTUBE-STYLE SEARCH BOX */
+
+/* =========================================================
+   YOUTUBE-STYLE SEARCH BOX
+   ========================================================= */
+
 .search-box {
   flex: 1;
   max-width: 650px;
@@ -60,7 +68,7 @@
   background-color: #f8f9fa;
   transition: all 0.2s;
   outline: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .youtube-search-input:focus {
@@ -79,49 +87,73 @@
   font-size: 1rem;
   transition: color 0.2s;
 }
+
 .clear-icon:hover {
   color: #333;
 }
 
-/* Search results dropdown */
+
+/* =========================================================
+   SEARCH RESULTS DROPDOWN
+   ========================================================= */
+
 .search-results-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   background: white;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   max-height: 400px;
   overflow-y: auto;
   z-index: 1050;
   margin-top: 8px;
 }
+
 .search-result-item {
   transition: background 0.1s;
   cursor: default;
 }
+
 .search-result-item:hover {
   background: #f8fafc;
 }
+
 .placeholder-img {
   background: #f1f3f5;
 }
+
 .result-info {
   min-width: 0;
 }
 
-/* Icons & Badges */
+.search-results-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   ICONS & BADGES
+   ========================================================= */
+
 .icon {
   cursor: pointer;
   font-size: 20px;
   transition: transform 0.2s, color 0.2s;
   position: relative;
 }
+
 .icon:hover {
   transform: scale(1.1);
   color: #00d4ff;
 }
+
 .badge-icon {
   position: absolute;
   top: -8px;
@@ -137,6 +169,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .cart-badge {
   position: absolute;
   top: -8px;
@@ -153,14 +186,20 @@
   justify-content: center;
 }
 
-/* Profile */
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
 .profile-box {
   cursor: pointer;
   transition: transform 0.2s;
 }
+
 .profile-box:hover {
   transform: scale(1.05);
 }
+
 .profile-img {
   width: 38px;
   height: 38px;
@@ -168,11 +207,16 @@
   object-fit: cover;
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
+
 .profile-img:hover {
   box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.4);
 }
 
-/* Profile Dropdown */
+
+/* =========================================================
+   PROFILE DROPDOWN
+   ========================================================= */
+
 .profile-dropdown {
   position: absolute;
   top: 65px;
@@ -185,6 +229,7 @@
   z-index: 9999;
   animation: fadeIn 0.2s ease-in-out;
 }
+
 .profile-dropdown .dropdown-item {
   padding: 10px 15px;
   font-size: 14px;
@@ -192,198 +237,780 @@
   color: #333;
   transition: background 0.2s;
 }
+
 .profile-dropdown .dropdown-item:hover {
   background: #f5f5f5;
 }
 
-/* MENU BAR */
+
+/* =========================================================
+   PREMIUM MENU BAR
+   ========================================================= */
+
 .menu-bar {
-  background: white;
-  height: 50px;
-  border-bottom: 1px solid #eee;
-  padding: 0 20px;
+  background: #ffffff;
+  min-height: 58px;
+  padding: 0 24px;
+
+  border-bottom: 1px solid #e9ecef;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+
+  position: relative;
+  z-index: 1000;
 }
+
+
+/* =========================================================
+   LEFT MENU
+   ========================================================= */
+
 .menu-left {
   display: flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
+
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+
 .menu-item {
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  display: flex;
+  position: relative;
+
+  height: 42px;
+
+  padding: 0 14px;
+
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  transition: color 0.2s;
+  justify-content: center;
+
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #343a40;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  border-radius: 9px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
+
+
+/* =========================================================
+   MENU HOVER
+   ========================================================= */
+
 .menu-item:hover {
   color: #5a3fff;
+  background: #f4f1ff;
 }
+
+
+/* =========================================================
+   ACTIVE MENU ITEM
+   ========================================================= */
+
+.menu-item.active {
+  color: #5a3fff;
+  background: #f1edff;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   ACTIVE MENU BOTTOM LINE
+   ========================================================= */
+
+.menu-item.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 14px;
+  right: 14px;
+
+  bottom: -9px;
+
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #5a3fff,
+    #7a4dff
+  );
+
+  border-radius: 10px 10px 0 0;
+}
+
+
+/* =========================================================
+   MENU ARROW
+   ========================================================= */
+
 .arrow {
-  font-size: 12px;
+  font-size: 11px;
+  color: #777;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
+
+.menu-item:hover .arrow {
+  transform: rotate(180deg);
+  color: #5a3fff;
+}
+
+
+/* =========================================================
+   PRESCRIPTION MENU
+   ========================================================= */
+
+.prescription-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   PRESCRIPTION SUBMENU
+   ========================================================= */
+
+.prescription-menu .submenu {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 0;
+
+  width: 220px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 12px;
+
+  padding: 7px;
+
+  box-shadow:
+    0 12px 35px rgba(30, 20, 70, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(8px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+
+  z-index: 99999;
+}
+
+
+/* =========================================================
+   SUBMENU TOP ARROW
+   ========================================================= */
+
+.prescription-menu .submenu::before {
+  content: "";
+
+  position: absolute;
+
+  top: -6px;
+  left: 28px;
+
+  width: 12px;
+  height: 12px;
+
+  background: #ffffff;
+
+  border-left: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   SHOW PRESCRIPTION SUBMENU
+   ========================================================= */
+
+.prescription-menu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   SUBMENU ITEM
+   ========================================================= */
+
+.submenu-item {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 11px 12px;
+
+  border-radius: 8px;
+
+  font-size: 13.5px;
+  font-weight: 500;
+
+  color: #343a40;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================================================
+   SUBMENU HOVER
+   ========================================================= */
+
+.submenu-item:hover {
+  background: #f4f1ff;
+  color: #5a3fff;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   SUBMENU ICON
+   ========================================================= */
+
+.submenu-item .submenu-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #f3f0ff;
+
+  color: #5a3fff;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   RIGHT MENU
+   ========================================================= */
+
 .menu-right {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-.menu-link {
-  font-size: 14px;
-  color: #5a3fff;
-  cursor: pointer;
-}
-.menu-link:hover {
-  text-decoration: underline;
-}
-.seller-btn {
-  background: #20c997;
-  border: none;
-  color: white;
-  padding: 5px 15px;
-  border-radius: 30px;
-  font-size: 13px;
-  cursor: pointer;
-}
-.seller-btn:hover {
-  opacity: 0.85;
+  gap: 10px;
 }
 
-/* ========== ADVANCED CART SIDEBAR STYLES ========== */
+
+/* =========================================================
+   RIGHT MENU LINKS
+   ========================================================= */
+
+.menu-link {
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0 12px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #5a3fff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.menu-link:hover {
+  background: #f4f1ff;
+  color: #4930d6;
+}
+
+
+/* =========================================================
+   SELLER BUTTON
+   ========================================================= */
+
+.seller-btn {
+  height: 36px;
+
+  padding: 0 17px;
+
+  border: none;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #20c997,
+    #12b886
+  );
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 10px rgba(32, 201, 151, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.seller-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 15px rgba(32, 201, 151, 0.3);
+}
+
+.seller-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   TOUCH STORE
+   ========================================================= */
+
+.menu-right .menu-link:last-child {
+  background: #f8f7ff;
+
+  border: 1px solid #e7e2ff;
+}
+
+.menu-right .menu-link:last-child:hover {
+  background: #f0ecff;
+}
+
+
+/* =========================================================
+   MENU SEPARATOR
+   ========================================================= */
+
+.menu-left::after {
+  content: "";
+
+  width: 1px;
+  height: 25px;
+
+  background: #e5e7eb;
+
+  margin-left: 8px;
+}
+
+
+/* =========================================================
+   ADVANCED CART SIDEBAR
+   ========================================================= */
+
 .offcanvas {
   max-width: 480px;
+
   background: #fff;
+
   border-left: none;
-  box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+
+  box-shadow:
+    -5px 0 25px rgba(0, 0, 0, 0.1);
 }
 
 .offcanvas-header {
-  background: linear-gradient(135deg, #5a3fff, #7a4dff);
+  background: linear-gradient(
+    135deg,
+    #5a3fff,
+    #7a4dff
+  );
+
   color: white;
+
   border-bottom: none;
 }
+
 .offcanvas-header .btn-close {
   filter: brightness(0) invert(1);
 }
 
-/* Product pending section */
+
+/* =========================================================
+   PENDING PRODUCT SECTION
+   ========================================================= */
+
 .pending-product {
   background: #fef9e6;
+
   border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.03);
 }
+
+
+/* =========================================================
+   STORE ITEM
+   ========================================================= */
+
 .store-item {
   background: white;
+
   border-radius: 16px;
-  transition: transform 0.1s, box-shadow 0.2s;
+
+  transition:
+    transform 0.1s,
+    box-shadow 0.2s;
 }
+
 .store-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.05);
 }
+
 .store-item .badge {
   font-size: 0.7rem;
+
   padding: 0.3rem 0.6rem;
 }
-/* Cart items inside sidebar */
+
+
+/* =========================================================
+   CART ITEM CARD
+   ========================================================= */
+
 .cart-item-card {
   background: white;
+
   border-radius: 16px;
+
   transition: all 0.2s;
 }
+
 .cart-item-card:hover {
   background: #fdfdfd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.05);
 }
+
+
+/* =========================================================
+   CART SUMMARY
+   ========================================================= */
+
 .cart-summary {
   background: #f8f9fa;
+
   border-radius: 20px;
+
   padding: 1rem;
+
   margin-top: 1rem;
+
   position: sticky;
+
   bottom: 0;
+
   backdrop-filter: blur(8px);
 }
-/* Quantity buttons */
+
+
+/* =========================================================
+   QUANTITY BUTTONS
+   ========================================================= */
+
 .btn-group-sm .btn {
   padding: 0.2rem 0.6rem;
+
   font-size: 0.75rem;
 }
+
+
+/* =========================================================
+   STORE HORIZONTAL SCROLLBAR
+   ========================================================= */
+
 .store-flex-container::-webkit-scrollbar {
   height: 6px;
 }
 
 .store-flex-container::-webkit-scrollbar-thumb {
   background: #ccc;
+
   border-radius: 10px;
 }
 
-.search-results-dropdown {
-  max-height: 400px;
-  overflow-y: auto;
-  border-radius: 10px;
+
+/* =========================================================
+   STORE SELECTOR
+   ========================================================= */
+
+.store-selector .react-select__single-value {
+  color: #212529 !important;
+
+  opacity: 1 !important;
 }
 
-.search-results-dropdown::-webkit-scrollbar {
-  width: 4px;
+
+/* =========================================================
+   DARK MODE STORE SELECTOR
+   ========================================================= */
+
+html.dark .store-selector .react-select__single-value {
+  color: #212529 !important;
+
+  opacity: 1 !important;
 }
 
-.search-results-dropdown::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
+
+/* =========================================================
+   STORE SELECTOR CONTROL
+   ========================================================= */
+
+.store-selector .react-select__control,
+html.dark .store-selector .react-select__control {
+  background: #ffffff !important;
+
+  border: 1px solid #ced4da !important;
 }
-/* Responsive */
+
+
+/* =========================================================
+   STORE SELECTOR PLACEHOLDER
+   ========================================================= */
+
+.store-selector .react-select__placeholder,
+html.dark .store-selector .react-select__placeholder {
+  color: #6c757d !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE - LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .menu-bar {
+    padding: 0 15px;
+  }
+
+  .menu-left {
+    gap: 3px;
+  }
+
+  .menu-item {
+    padding: 0 10px;
+
+    font-size: 13px;
+  }
+
+  .menu-right {
+    gap: 5px;
+  }
+
+  .menu-link {
+    padding: 0 8px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
 @media (max-width: 992px) {
+
   .topbar {
     flex-wrap: wrap;
+
     height: auto;
+
     padding: 10px;
+
     gap: 10px;
   }
+
   .search-box {
     order: 3;
+
     width: 100%;
+
     max-width: none;
   }
+
+
+  /* MENU */
+
   .menu-bar {
-    height: auto;
-    flex-direction: column;
-    gap: 10px;
+    min-height: auto;
+
+    padding: 8px 12px;
+
+    overflow-x: auto;
+
+    justify-content: flex-start;
+
+    gap: 8px;
   }
+
   .menu-left {
-    justify-content: center;
+    overflow-x: auto;
+
+    flex-wrap: nowrap;
+
+    scrollbar-width: none;
   }
+
+  .menu-left::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-right {
+    flex-shrink: 0;
+
+    margin-left: 10px;
+  }
+
+  .menu-item {
+    height: 40px;
+  }
+
+  .menu-item.active::after {
+    bottom: -8px;
+  }
+
   .offcanvas {
     max-width: 90%;
   }
 }
 
-/* ─── FORCE STORE SELECTOR TEXT TO BE DARK ─── */
-.store-selector .react-select__single-value {
-  color: #212529 !important;
-  opacity: 1 !important;
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+  .topbar {
+    padding: 8px 10px;
+  }
+
+  .logo {
+    font-size: 19px;
+  }
+
+  .youtube-search-input {
+    padding: 10px 35px 10px 40px;
+
+    font-size: 14px;
+  }
+
+
+  /* MENU */
+
+  .menu-bar {
+    padding: 7px 10px;
+  }
+
+  .menu-left {
+    gap: 3px;
+  }
+
+  .menu-item {
+    height: 38px;
+
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .menu-item.active::after {
+    left: 10px;
+    right: 10px;
+
+    bottom: -7px;
+  }
+
+  .menu-right {
+    display: none;
+  }
+
+  .prescription-menu .submenu {
+    width: 200px;
+  }
+
+  .submenu-item {
+    font-size: 13px;
+
+    padding: 10px;
+  }
 }
 
-/* ─── ALSO OVERRIDE DARK MODE ─── */
-html.dark .store-selector .react-select__single-value {
-  color: #212529 !important;
-  opacity: 1 !important;
-}
 
-/* ─── FORCE THE CONTROL BACKGROUND ─── */
-.store-selector .react-select__control,
-html.dark .store-selector .react-select__control {
-  background: #ffffff !important;
-  border: 1px solid #ced4da !important;
-}
+/* =========================================================
+   FADE IN ANIMATION
+   ========================================================= */
 
-/* ─── FORCE THE PLACEHOLDER ─── */
-.store-selector .react-select__placeholder,
-html.dark .store-selector .react-select__placeholder {
-  color: #6c757d !important;
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
 }

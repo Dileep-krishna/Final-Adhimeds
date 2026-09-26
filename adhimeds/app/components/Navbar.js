@@ -1006,49 +1006,204 @@ export default function Navbar() {
       </div>
 
       {/* MENU BAR */}
-      <div className="menu-bar d-flex justify-content-between align-items-center px-3">
-        <div className="menu-left d-flex align-items-center gap-4">
-          <div className="menu-item">
-            All Product <span className="arrow">⌄</span>
-          </div>
+<div className="menu-bar d-flex justify-content-between align-items-center px-3">
 
-          <div className="menu-item">
-            Orders <span className="arrow">⌄</span>
-          </div>
+  <div className="menu-left d-flex align-items-center gap-4">
 
-          <div className="menu-item">
-            Outstanding <span className="arrow">⌄</span>
-          </div>
+    {/* =================================================
+        ALL PRODUCTS
+       ================================================= */}
 
-          <div className="menu-item">
-            Manage Returns{" "}
-            <span className="arrow">⌄</span>
-          </div>
+    <div
+      className="menu-item"
+      onClick={() => router.push("/all-products")}
+    >
+      All Product
+      <span className="arrow">⌄</span>
+    </div>
 
-          <div className="menu-item">
-            Invoices
-          </div>
 
-          <div className="menu-item">
-            Support & Ticket{" "}
-            <span className="arrow">⌄</span>
-          </div>
-        </div>
+    {/* =================================================
+        ORDERS MENU
+       ================================================= */}
 
-        <div className="menu-right d-flex align-items-center gap-3">
-          <span className="menu-link">
-            Manage License
+    <div className="menu-item prescription-menu">
+
+      <span>Orders</span>
+
+      <span className="arrow">⌄</span>
+
+      <div className="submenu">
+
+        {/* Prescription Orders */}
+
+        <div
+          className="submenu-item"
+          onClick={() => router.push("/pharma-dashboard/orders/prescription")}
+        >
+          <span className="submenu-icon">
+            📋
           </span>
 
-          <button className="seller-btn">
-            Seller List
-          </button>
-
-          <span className="menu-link">
-            Touch Store ↗
+          <span>
+            Prescription Orders
           </span>
         </div>
+
+
+        {/* Normal Orders */}
+
+        <div
+          className="submenu-item"
+          onClick={() => router.push("/pharma-dashboard/orders/normal")}
+        >
+          <span className="submenu-icon">
+            🛒
+          </span>
+
+          <span>
+            Normal Orders
+          </span>
+        </div>
+
       </div>
+
+    </div>
+
+
+    {/* =================================================
+        OUTSTANDING
+       ================================================= */}
+
+    <div
+      className="menu-item"
+      onClick={() => router.push("/outstanding")}
+    >
+      Outstanding
+      <span className="arrow">⌄</span>
+    </div>
+
+
+    {/* =================================================
+        MANAGE RETURNS
+       ================================================= */}
+
+    <div
+      className="menu-item"
+      onClick={() => router.push("/manage-returns")}
+    >
+      Manage Returns
+      <span className="arrow">⌄</span>
+    </div>
+
+
+    {/* =================================================
+        PRESCRIPTION
+       ================================================= */}
+
+    <div className="menu-item prescription-menu">
+
+      <span>
+        Prescription
+      </span>
+
+      <span className="arrow">
+        ⌄
+      </span>
+
+
+      {/* Prescription Submenu */}
+
+      <div className="submenu">
+
+        {/* Prescription List */}
+
+        <div
+          className="submenu-item"
+          onClick={() => router.push("/pharma-dashboard/prescription-list")}
+        >
+
+          <span className="submenu-icon">
+            📄
+          </span>
+
+          <span>
+            Prescription List
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    {/* =================================================
+        INVOICES
+       ================================================= */}
+
+    <div
+      className="menu-item"
+      onClick={() => router.push("/invoices")}
+    >
+      Invoices
+    </div>
+
+
+    {/* =================================================
+        SUPPORT & TICKET
+       ================================================= */}
+
+    <div
+      className="menu-item"
+      onClick={() => router.push("/support")}
+    >
+      Support & Ticket
+      <span className="arrow">⌄</span>
+    </div>
+
+  </div>
+
+
+  {/* =====================================================
+      RIGHT MENU
+     ===================================================== */}
+
+  <div className="menu-right d-flex align-items-center gap-3">
+
+
+    {/* Manage License */}
+
+    <span
+      className="menu-link"
+      onClick={() => router.push("/manage-license")}
+    >
+      Manage License
+    </span>
+
+
+    {/* Seller List */}
+
+    <button
+      className="seller-btn"
+      onClick={() => router.push("/seller-list")}
+    >
+      Seller List
+    </button>
+
+
+    {/* Touch Store */}
+
+    <span
+      className="menu-link"
+      onClick={() => router.push("/touch-store")}
+    >
+      Touch Store ↗
+    </span>
+
+  </div>
+
+</div>
 
       {/* CART SIDEBAR */}
       <CartSidebar
